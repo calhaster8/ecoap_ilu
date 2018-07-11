@@ -1,0 +1,431 @@
+@font-face {
+  font-family: Amelia-Basic;
+  src: url("../fonts/Amelia/Amelia-Basic.otf"); }
+
+@font-face {
+  font-family: Amelia-Basic-Light;
+  font-weight: lighter;
+  src: url("../fonts/Amelia/Amelia-Basic-Light.otf"); }
+
+@font-face {
+  font-family: Amelia-Basic-Bold;
+  font-weight: bold;
+  src: url("../fonts/Amelia/Amelia-Basic-Bold.otf"); }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: 'Amelia-Basic', sans-serif;
+  background-image: url(../img/fundo/caracois.png), url("../img/fundo.png");
+  background-position: 80% 180px, center;
+  background-size: 450px 450px, cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh; }
+  @media screen and (max-width: 768px) {
+    body {
+      background-image: url(../img/fundo/caracois.png), url("../img/fundo.png");
+      background-position: 80% 180px, center;
+      background-size: 400px 400px, cover; } }
+  @media screen and (max-width: 635px) {
+    body {
+      background-image: url("../img/fundo.png");
+      background-position: center;
+      background-size: cover; } }
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 50px 100px; }
+  @media screen and (max-width: 635px) {
+    .header {
+      padding: 50px 0; } }
+  @media screen and (max-width: 635px) {
+    .header {
+      padding: 50px 0; } }
+  .header .header-title {
+    color: #0099cc;
+    font-size: 1.6em;
+    font-family: 'Amelia-Basic-Light', sans-serif;
+    text-transform: uppercase;
+    padding: 0 20px; }
+
+.main {
+  margin: 0 50px 50px 50px;
+  padding: 0 25px; }
+  @media screen and (max-width: 635px) {
+    .main {
+      margin: 0;
+      padding: 0 25px; } }
+  .main .main-content .dados-titulo {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #0099cc;
+    font-family: 'Amelia-Basic-Bold', sans-serif; }
+  .main .main-content .dados-child {
+    display: flex;
+    flex-direction: column; }
+    .main .main-content .dados-child .dado {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.2em; }
+      .main .main-content .dados-child .dado .tipo-iluminacao-box,
+      .main .main-content .dados-child .dado .custo-iluminacao-box {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px; }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box label,
+        .main .main-content .dados-child .dado .custo-iluminacao-box label {
+          margin-bottom: 5px;
+          color: #0099cc;
+          font-weight: 400; }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box input,
+        .main .main-content .dados-child .dado .custo-iluminacao-box input {
+          width: 30%;
+          padding: 5px 20px;
+          font-size: .8em;
+          border: none;
+          border: 1px solid #0099cc;
+          border-radius: 100px;
+          color: #0099cc;
+          font-weight: 300;
+          font-family: 'Amelia-Basic-Light', sans-serif; }
+          @media screen and (max-width: 635px) {
+            .main .main-content .dados-child .dado .tipo-iluminacao-box input,
+            .main .main-content .dados-child .dado .custo-iluminacao-box input {
+              width: 100%; } }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box input[type=number]::-webkit-inner-spin-button,
+        .main .main-content .dados-child .dado .custo-iluminacao-box input[type=number]::-webkit-inner-spin-button {
+          -webkit-appearance: none; }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box input:focus,
+        .main .main-content .dados-child .dado .custo-iluminacao-box input:focus {
+          outline: none; }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box .sel,
+        .main .main-content .dados-child .dado .custo-iluminacao-box .sel {
+          width: 30%;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background: url("../img/seta.png") no-repeat 95% center;
+          appearance: none;
+          padding: 5px 20px;
+          font-size: .8em;
+          color: #808080;
+          font-family: 'Amelia-Basic-Light', sans-serif;
+          overflow: hidden;
+          border: none;
+          border: 1px solid #0099cc;
+          border-radius: 100px;
+          background-color: transparent; }
+          @media screen and (max-width: 635px) {
+            .main .main-content .dados-child .dado .tipo-iluminacao-box .sel,
+            .main .main-content .dados-child .dado .custo-iluminacao-box .sel {
+              width: 100%; } }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box .sel:focus,
+        .main .main-content .dados-child .dado .custo-iluminacao-box .sel:focus {
+          outline: none; }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box .sel::-ms-expand,
+        .main .main-content .dados-child .dado .custo-iluminacao-box .sel::-ms-expand {
+          display: none; }
+        .main .main-content .dados-child .dado .tipo-iluminacao-box .sel-disable,
+        .main .main-content .dados-child .dado .custo-iluminacao-box .sel-disable {
+          background-color: #0099cc;
+          background-image: none;
+          color: #fff; }
+    .main .main-content .dados-child .tabelas span {
+      text-align: left;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      color: #0099cc;
+      font-family: 'Amelia-Basic-Bold', sans-serif; }
+    .main .main-content .dados-child .tabelas table {
+      background-color: rgba(242, 242, 242, 0); }
+      .main .main-content .dados-child .tabelas table tbody .titulo_row {
+        background-color: rgba(242, 242, 242, 0.9); }
+      .main .main-content .dados-child .tabelas table tbody tr,
+      .main .main-content .dados-child .tabelas table tbody .textTR {
+        color: #0099cc;
+        text-align: center; }
+        .main .main-content .dados-child .tabelas table tbody tr .tituloTH,
+        .main .main-content .dados-child .tabelas table tbody .textTR .tituloTH {
+          text-align: center;
+          vertical-align: middle;
+          color: #0099cc; }
+        .main .main-content .dados-child .tabelas table tbody tr td,
+        .main .main-content .dados-child .tabelas table tbody tr td.in,
+        .main .main-content .dados-child .tabelas table tbody .textTR td,
+        .main .main-content .dados-child .tabelas table tbody .textTR td.in {
+          padding: 0;
+          text-align: center;
+          vertical-align: middle;
+          margin: 0;
+          background-color: rgba(255, 255, 255, 0.9);
+          /*.form-control
+                                    width: 100px*/ }
+          .main .main-content .dados-child .tabelas table tbody tr td input.xInput,
+          .main .main-content .dados-child .tabelas table tbody tr td.in input.xInput,
+          .main .main-content .dados-child .tabelas table tbody .textTR td input.xInput,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in input.xInput {
+            border: none;
+            border-radius: 0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.7); }
+          .main .main-content .dados-child .tabelas table tbody tr td input[type=number]::-webkit-inner-spin-button,
+          .main .main-content .dados-child .tabelas table tbody tr td.in input[type=number]::-webkit-inner-spin-button,
+          .main .main-content .dados-child .tabelas table tbody .textTR td input[type=number]::-webkit-inner-spin-button,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none; }
+          .main .main-content .dados-child .tabelas table tbody tr td input.xInput::-webkit-input-placeholder,
+          .main .main-content .dados-child .tabelas table tbody tr td.in input.xInput::-webkit-input-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td input.xInput::-webkit-input-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in input.xInput::-webkit-input-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child .tabelas table tbody tr td input.xInput::-moz-placeholder,
+          .main .main-content .dados-child .tabelas table tbody tr td.in input.xInput::-moz-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td input.xInput::-moz-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in input.xInput::-moz-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child .tabelas table tbody tr td input.xInput:-ms-input-placeholder,
+          .main .main-content .dados-child .tabelas table tbody tr td.in input.xInput:-ms-input-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td input.xInput:-ms-input-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in input.xInput:-ms-input-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child .tabelas table tbody tr td input.xInput:-moz-placeholder,
+          .main .main-content .dados-child .tabelas table tbody tr td.in input.xInput:-moz-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td input.xInput:-moz-placeholder,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in input.xInput:-moz-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child .tabelas table tbody tr td i.fa-times,
+          .main .main-content .dados-child .tabelas table tbody tr td.in i.fa-times,
+          .main .main-content .dados-child .tabelas table tbody .textTR td i.fa-times,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in i.fa-times {
+            color: red;
+            padding: 8px; }
+          .main .main-content .dados-child .tabelas table tbody tr td i.fa-plus,
+          .main .main-content .dados-child .tabelas table tbody tr td.in i.fa-plus,
+          .main .main-content .dados-child .tabelas table tbody .textTR td i.fa-plus,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in i.fa-plus {
+            color: green;
+            padding: 8px; }
+          .main .main-content .dados-child .tabelas table tbody tr td .but-dados,
+          .main .main-content .dados-child .tabelas table tbody tr td.in .but-dados,
+          .main .main-content .dados-child .tabelas table tbody .textTR td .but-dados,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.in .but-dados {
+            width: 100%;
+            height: 34px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9); }
+            .main .main-content .dados-child .tabelas table tbody tr td .but-dados:hover,
+            .main .main-content .dados-child .tabelas table tbody tr td.in .but-dados:hover,
+            .main .main-content .dados-child .tabelas table tbody .textTR td .but-dados:hover,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.in .but-dados:hover {
+              text-decoration: underline; }
+            .main .main-content .dados-child .tabelas table tbody tr td .but-dados:focus,
+            .main .main-content .dados-child .tabelas table tbody tr td.in .but-dados:focus,
+            .main .main-content .dados-child .tabelas table tbody .textTR td .but-dados:focus,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.in .but-dados:focus {
+              outline: none; }
+        .main .main-content .dados-child .tabelas table tbody tr td.select-cell-2,
+        .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell-2 {
+          padding: 0;
+          vertical-align: top; }
+          .main .main-content .dados-child .tabelas table tbody tr td.select-cell-2 select,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell-2 select {
+            width: 100%;
+            height: 34px;
+            border: none;
+            background-color: transparent;
+            text-align-last: center; }
+            .main .main-content .dados-child .tabelas table tbody tr td.select-cell-2 select:focus,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell-2 select:focus {
+              outline: none; }
+            .main .main-content .dados-child .tabelas table tbody tr td.select-cell-2 select .op,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell-2 select .op {
+              text-align-last: center; }
+        .main .main-content .dados-child .tabelas table tbody tr td.select-cell,
+        .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell {
+          padding: 0;
+          vertical-align: top; }
+          .main .main-content .dados-child .tabelas table tbody tr td.select-cell select,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell select {
+            width: 100%;
+            height: 34px;
+            border: none;
+            background-color: transparent;
+            text-align-last: center; }
+            .main .main-content .dados-child .tabelas table tbody tr td.select-cell select:focus,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell select:focus {
+              outline: none; }
+            .main .main-content .dados-child .tabelas table tbody tr td.select-cell select .op,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.select-cell select .op {
+              text-align-last: center; }
+        .main .main-content .dados-child .tabelas table tbody tr td.outro-hide,
+        .main .main-content .dados-child .tabelas table tbody .textTR td.outro-hide {
+          display: none; }
+    .main .main-content .dados-child #resumo span {
+      text-align: left;
+      text-transform: uppercase;
+      font-size: 1.3em;
+      color: #0099cc;
+      font-family: 'Amelia-Basic-Bold', sans-serif; }
+    .main .main-content .dados-child #resumo table {
+      background-color: #f2f2f2;
+      width: 40%; }
+      .main .main-content .dados-child #resumo table tbody tr,
+      .main .main-content .dados-child #resumo table tbody .textTR {
+        color: #0099cc;
+        text-align: left; }
+        .main .main-content .dados-child #resumo table tbody tr .tituloTH,
+        .main .main-content .dados-child #resumo table tbody .textTR .tituloTH {
+          text-align: center;
+          vertical-align: middle;
+          color: #0099cc; }
+        .main .main-content .dados-child #resumo table tbody tr td,
+        .main .main-content .dados-child #resumo table tbody tr td.in,
+        .main .main-content .dados-child #resumo table tbody .textTR td,
+        .main .main-content .dados-child #resumo table tbody .textTR td.in {
+          padding: 5px 10px;
+          text-align: left;
+          vertical-align: middle;
+          margin: 0;
+          background-color: #fff; }
+        .main .main-content .dados-child #resumo table tbody tr td.center,
+        .main .main-content .dados-child #resumo table tbody .textTR td.center {
+          text-align: center;
+          color: #696969;
+          /*.form-control
+                                    width: 100px*/ }
+          .main .main-content .dados-child #resumo table tbody tr td.center .xInput,
+          .main .main-content .dados-child #resumo table tbody .textTR td.center .xInput {
+            border: none;
+            border-radius: 0;
+            text-align: center;
+            margin: 0; }
+          .main .main-content .dados-child #resumo table tbody tr td.center .xInput::-webkit-input-placeholder,
+          .main .main-content .dados-child #resumo table tbody .textTR td.center .xInput::-webkit-input-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child #resumo table tbody tr td.center .xInput::-moz-placeholder,
+          .main .main-content .dados-child #resumo table tbody .textTR td.center .xInput::-moz-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child #resumo table tbody tr td.center .xInput:-ms-input-placeholder,
+          .main .main-content .dados-child #resumo table tbody .textTR td.center .xInput:-ms-input-placeholder {
+            color: #DCDCDC; }
+          .main .main-content .dados-child #resumo table tbody tr td.center .xInput:-moz-placeholder,
+          .main .main-content .dados-child #resumo table tbody .textTR td.center .xInput:-moz-placeholder {
+            color: #DCDCDC; }
+    .main .main-content .dados-child .step {
+      display: none; }
+
+.but-2,
+.recolhe-medidas-but,
+.end-step,
+.analise {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between; }
+  .but-2 .but,
+  .recolhe-medidas-but .but,
+  .end-step .but,
+  .analise .but {
+    font-size: 1.1em;
+    padding: 8px 25px;
+    background-color: #0099cc;
+    border: none;
+    border-radius: 100px;
+    color: #fff;
+    font-family: 'Amelia-Basic-Light', sans-serif;
+    transition: all .2s; }
+    .but-2 .but:focus,
+    .recolhe-medidas-but .but:focus,
+    .end-step .but:focus,
+    .analise .but:focus {
+      outline: none; }
+    .but-2 .but:hover,
+    .recolhe-medidas-but .but:hover,
+    .end-step .but:hover,
+    .analise .but:hover {
+      background-color: #67C8FF; }
+  .but-2 button#analise-but,
+  .but-2 button#resumo-but,
+  .but-2 button#fonte-luz-but,
+  .but-2 button#medidas-but,
+  .recolhe-medidas-but button#analise-but,
+  .recolhe-medidas-but button#resumo-but,
+  .recolhe-medidas-but button#fonte-luz-but,
+  .recolhe-medidas-but button#medidas-but,
+  .end-step button#analise-but,
+  .end-step button#resumo-but,
+  .end-step button#fonte-luz-but,
+  .end-step button#medidas-but,
+  .analise button#analise-but,
+  .analise button#resumo-but,
+  .analise button#fonte-luz-but,
+  .analise button#medidas-but {
+    float: right; }
+  .but-2 .anterior,
+  .recolhe-medidas-but .anterior,
+  .end-step .anterior,
+  .analise .anterior {
+    display: none; }
+
+.step-but {
+  display: none; }
+
+.but-2::after,
+.recolhe-medidas-but::after,
+.analise::after,
+.end-step::after {
+  content: '';
+  clear: both;
+  display: table; }
+
+footer {
+  height: 200px;
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 153, 204, 0.7);
+  margin-top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  footer .partners {
+    padding: 20px 0;
+    text-align: center; }
+    footer .partners .partners-img {
+      width: 20%;
+      margin: 10px; }
+    footer .partners .rep-port {
+      width: 9%; }
+    footer .partners .port-energia {
+      width: 9%; }
+    footer .partners .dgeg {
+      width: 12%; }
+    footer .partners .lnec {
+      width: 10%; }
+    footer .partners .ee {
+      width: 4%; }
+    footer .partners .adene {
+      width: 9%; }
+    footer .partners .posteur {
+      width: 9%; }
+    footer .partners .port-2020 {
+      width: 9%; }
+    footer .partners .ue {
+      width: 11%; }
+    footer .partners .conf-text {
+      display: inline-block; }
+    footer .partners .partner-link {
+      margin: 0 10px; }
+  footer .policy {
+    padding: 10px;
+    text-align: center; }
+    footer .policy .policy-link {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #0083c4; }
