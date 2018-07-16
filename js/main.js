@@ -594,6 +594,7 @@ function nextStep() {
 
   if ($('.anterior:hidden').length > 1) {
     $('.anterior').show();
+    $('.custo-iluminacao-box').hide();
   }
 
   if (nextId == 2) {
@@ -628,6 +629,7 @@ function prevStep() {
     $('.recolhe-medidas-but').hide();
     $('.end-step').hide();
     $('.anterior').hide();
+    $('.custo-iluminacao-box').show();
   }
 
   if (prevId == 2) {
@@ -645,6 +647,13 @@ function prevStep() {
   }
 }
 
+function reguladoresChange() {
+  if ($('#tipo-iluminacao').val() == 0) {
+    $('.reg-exterior').hide();
+  } else if ($('#tipo-iluminacao').val() == 1) {
+    $('.reg-exterior').show();
+  }
+}
 
 
 /*MAIN*/
@@ -653,6 +662,8 @@ $(document).ready(function () {
   checkTipoIluminacao();
   //buildDadosTable();
   buildEspaco();
+
+  $('#tipo-iluminacao').change(reguladoresChange);
 
   $('#fonte-luz-but').on("click", function () {
     recolheDados();
@@ -665,4 +676,5 @@ $(document).ready(function () {
   $('#resumo-but').on('click', function () {
     recolheMedidas();
   });
+
 });
