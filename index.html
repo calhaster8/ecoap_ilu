@@ -65,8 +65,9 @@
                   <div id="espacos-iluminacao" name="espacos-iluminacao"></div>
                 </div>
                 <!-- step-->
-                <div id="fonte-luz" data-id="2" class="tabelas step"><span>Fonte de luz</span>
-                  <!--interior-->
+                <div id="fonte-luz" data-id="2" class="tabelas step">
+                  <span>Fonte de luz</span>
+                  <span class="popup-text">Este valor será calculado em função: 8h/dia x 5 dias/semana x 52 semanas/ano</span>
                   <table class="table table-bordered">
                     <tbody>
                       <tr class="titulo_row">
@@ -78,7 +79,7 @@
                         <th class="tituloTH">Qt.</th>
                         <th class="tituloTH">Tipo</th>
                         <th class="tituloTH">Potência (W)</th>
-                        <th class="tituloTH">Horas de funcionamento</th>
+                        <th class="tituloTH">Horas Anuais de funcionamento</th>
                         <th class="tituloTH">Rendimento</th>
                       </tr>
                       <tr id="espaco-fonte-luz" name="espaco-fonte-luz" hidden="hidden" class="classTR">
@@ -152,6 +153,10 @@
                             <option value="">Seleccionar opção</option>
                           </select>
                         </td>
+                        <!--<td class="check-cell slidebox">
+                          <input type="checkbox" value="None" id="regulador-slide" name="check"/>
+                          <label for="regulador-slide"></label>
+                        </td>-->
                         <td class="select-cell interior">
                           <select id="sensores-medidas" name="sensores-medidas" class="sel">
                             <option value="">Seleccionar opção</option>
@@ -162,6 +167,10 @@
                             <option value="">Seleccionar opção</option>
                           </select>
                         </td>
+                        <!--<td class="check-cell slidebox">
+                          <input type="checkbox" value="None" id="sistemas-slide" name="check" />
+                          <label for="sistemas-slide"></label>
+                        </td>-->
                       </tr>
                       <tr id="total-medidas-row" class="textTR">
                         <!--td.in(colspan="2") TOTAL-->
@@ -194,28 +203,25 @@
                       </tr>
                       <tr id="custps-energeticos-resumo" class="textTR">
                         <td class="in">Custos energéticos (€)</td>
-                        <td id="custos-energeticos-1-resumo" class="center">valor</td>
-                        <td id="custos-energeticos-2-resumo" class="center">valor</td>
+                        <td id="custos-energeticos-1-resumo" class="center">-€</td>
+                        <td id="custos-energeticos-2-resumo" class="center">-€</td>
                       </tr>
                       <tr class="textTR">
-                        <td class="in">Redução de custos (€/ano)</td>
-                        <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>
+                        <td class="in" rowspan="2">Redução de custos (€/ano)</td>
+                        <td id="reducao-custos-1-resumo" colspan="2" class="center">-€</td>
                         <!--td.in valor-->
                       </tr>
-                      <!--tr.textTR
-                      td.center#reducao-custos-2-resumo(colspan="2") valor
-                      //td.in - €
-                      
-                      -->
+                      <tr class="textTR">
+                        <td class="center" id="reducao-custos-2-resumo" colspan="2">-%</td>
+                      </tr>
                       <tr class="textTR">
                         <td class="in">Investimento (€)</td>
                         <td id="investimento-resumo" colspan="2" class="center">- €</td>
                       </tr>
                       <tr class="textTR">
                         <td class="in">Payback (anos)</td>
-                        <td id="payback-resumo" colspan="2" class="center">valor</td>
+                        <td id="payback-resumo" colspan="2" class="center">anos</td>
                         <!--td.in valor-->
-                        
                       </tr>
                     </tbody>
                   </table>

@@ -539,7 +539,7 @@ function checkCamposMedidas() {
         break;
       }
     } else if (estado == INTERIOR) {
-      if ((medidasDados[i].fonteLuz !== "") && (medidasDados[i].reguladoresFluxo !== "") && (medidasDados[i].sensores !== "") && (medidasDados[i].sistemaGestao !== "")) {
+      if ((medidasDados[i].fonteLuz !== "") && (medidasDados[i].sensores !== "") && (medidasDados[i].sistemaGestao !== "")) {
         continue;
       }
       else {
@@ -565,7 +565,7 @@ function buildResumo() {
   resumoCenarios[1].consumoAnual = cenarioFinal[TOTAL].consumoFinal.toFixed(0);
   resumoCenarios[1].custosEnergeticos = cenarioFinal[TOTAL].custoEnergia.toFixed(0);
   resumoGeral.reducaoCustos1 = investimento[TOTAL].reducaoCustos1.toFixed(0);
-  resumoGeral.reducaoCustos2 = cenarioFinal[TOTAL].reducaoAnual.toFixed(0) * 100;
+  resumoGeral.reducaoCustos2 = cenarioFinal[TOTAL].reducaoAnual * 100;
   resumoGeral.investimento = investimento[TOTAL].investimento.toFixed(0);
   resumoGeral.payback = investimento[TOTAL].pri.toFixed(1);
   //cenario inicial
@@ -577,9 +577,8 @@ function buildResumo() {
   $("#consumo-anual-2-resumo").html(resumoCenarios[FINAL].consumoAnual + ' kWh');
   $("#custos-energeticos-2-resumo").html(resumoCenarios[FINAL].custosEnergeticos + ' €');
 
-
   $("#reducao-custos-1-resumo").html(resumoGeral.reducaoCustos1 + ' €');
-  $("#reducao-custos-2-resumo").html(resumoGeral.reducaoCustos2 + '%');
+  $("#reducao-custos-2-resumo").html((resumoGeral.reducaoCustos2).toFixed(0) + '%');
   $("#investimento-resumo").html(resumoGeral.investimento + ' €');
   $("#payback-resumo").html(resumoGeral.payback + ' anos');
 }
@@ -676,5 +675,4 @@ $(document).ready(function () {
   $('#resumo-but').on('click', function () {
     recolheMedidas();
   });
-
 });
