@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <!--Place favicon.ico in the root directory-->
     <link rel="apple-touch-icon" href="icon.png"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"  crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400|Open+Sans:300,400|Roboto:100,300,400" rel="stylesheet"/>
     <link rel="shortcut icon" href="img/logo-head-small.png" type="image/png"/>
     <!--BOOTSTRAP CDN-->
@@ -16,7 +16,7 @@
     <!--link(rel="stylesheet" href="css/main.css")-->
     <link rel="stylesheet" href="css/style.css"/>
     <!--BOOTSTRAP + JQUERY CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--CUSTOM JS-->
     <script src="js/plugins.js"></script>
@@ -24,18 +24,11 @@
     <script src="js/main.js"></script>
     <script src="js/calculos.js"></script>
     <script src="js/cenarios.js"></script>
-    <!--script(src="js/ilum_globals.js")-->
-    <!--FICHEIROS LOCAIS ANTIGOS-->
-    <!--script(src="js/vendor/modernizr-3.6.0.min.js")-->
-    <!--script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")-->
-    <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>-->
     <title>Calculadora - Iluminação</title>
   </head>
   <body>
     <header class="header">
-      <!--span Eco.AP Calculator-->
-      <!--.logo--><span class="header-title">Calculadora - Iluminação</span>
-      <!--img.logo-img(src="img/logo.png", alt="logo")-->
+      <span class="header-title">Calculadora - Iluminação</span>
       
     </header>
     <main class="main container">
@@ -101,14 +94,6 @@
                         <td id="potencia-fonte-luz-input" hidden="hidden" class="in outro-input potencia-fonte-luz">
                           <input type="number" name="potencia-fonte-luz" placeholder="0" class="form-control xInput" min="0"/>
                         </td>
-                        <!--td.select-cell
-                        select#horas-func-int.sel(name="horas-func-int")
-                            option(value="") Seleccionar opção
-                            option(value="0") horas / dias
-                            option(value="1") dias / semana
-                            option(value="2") semanas / ano
-                        
-                        -->
                         <td class="in">
                           <input type="number" placeholder="0" class="form-control xInput" min="0"/>
                         </td>
@@ -172,13 +157,7 @@
                           <label for="sistemas-slide"></label>
                         </td>-->
                       </tr>
-                      <tr id="total-medidas-row" class="textTR">
-                        <!--td.in(colspan="2") TOTAL-->
-                        <!--td.in 0-->
-                        <!--td.in 0-->
-                        <!--td.in 0-->
-                        <!--td.in 0-->
-                        
+                      <tr id="total-medidas-row" class="textTR">                      
                       </tr>
                     </tbody>
                   </table>
@@ -207,12 +186,11 @@
                         <td id="custos-energeticos-2-resumo" class="center">-€</td>
                       </tr>
                       <tr class="textTR">
-                        <td class="in" rowspan="2">Redução de custos (€/ano)</td>
-                        <td id="reducao-custos-1-resumo" colspan="2" class="center">-€</td>
-                        <!--td.in valor-->
+                        <td rowspan="2" class="in">Redução de custos (€/ano)</td>
+                        <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>                        
                       </tr>
                       <tr class="textTR">
-                        <td class="center" id="reducao-custos-2-resumo" colspan="2">-%</td>
+                          <td id="reducao-custos-2-resumo" colspan="2" class="center">valor</td>
                       </tr>
                       <tr class="textTR">
                         <td class="in">Investimento (€)</td>
@@ -220,16 +198,11 @@
                       </tr>
                       <tr class="textTR">
                         <td class="in">Payback (anos)</td>
-                        <td id="payback-resumo" colspan="2" class="center">anos</td>
-                        <!--td.in valor-->
+                        <td id="payback-resumo" colspan="2" class="center">valor</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <!--.but-1
-                button#continuar-dados.but.seguinte(onclick="showMe()") Continuar
-                
-                -->
               </div>
             </div>
           </div>
@@ -241,7 +214,6 @@
           <div class="but-2">
             <!--.but-view (hidden)-->
             <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
-            <!--button.but.seguinte#next-but(type="button" onclick="nextStep()") Próximo-->
             <button id="fonte-luz-but" type="button" class="but fonte-luz-but">Próximo</button>
           </div>
           <div class="recolhe-medidas-but step-but">
@@ -250,57 +222,11 @@
           </div>
           <div class="end-step step-but">
             <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
-            <!--button.but.end-but#analise-but(type="button" onclick="nextStep()") Analisar-->
             <button id="resumo-but" type="button" class="but resumo-but">Analisar</button>
           </div>
-          <!--.analise.step-but
-          button.but.anterior(type="button" onclick="prevStep()") Anterior
-          //button.but.reanalise#reanalise-but(type="button" disabled) Reanalisar
-                  
-          
-          
-          -->
         </div>
       </div>
     </main>
-    <!--footer
-    .container-fluid
-        .row
-            .col-md-12
-                .partners
-                    a.partner-link(href="http://www.sg.min-economia.pt/")
-                        img.partners-img.rep-port(src="img/footer/rep-port.png", alt="Républica Portuguesa")
-                    
-                    a.partner-link(href="http://www.portugal.gov.pt/pt/ministerios/meco.aspx")
-                        img.partners-img.port-energia(src="img/footer/portugal-energia-direct.png", alt="Portugal Energia")
-                    
-                    a.partner-link(href="http://www.dgeg.pt/")
-                        img.partners-img.dgeg(src="img/footer/dgeg.png", alt="Direcção Geral de Energia e Geologia")
-                    
-                    a.partner-link(href="http://ecoap.pnaee.pt/")
-                        img.partners-img.ee(src="img/footer/Ee.png", alt="EE")
-                    
-                    a.partner-link.prom(href="https://www.adene.pt/")
-                        img.partners-img.adene(src="img/footer/base-adene.png", alt="Adene")
-                    
-                    //a(href="#")
-                    span.conf
-                        //.conf-text Confinaciado por:
-                        img.partners-img.posteur(src="img/footer/posteur.png", alt="Posteur")
-                    
-                    //a(href="#")
-                    img.partners-img.port-2020(src="img/footer/2020.png", alt="2020")
-                    
-                    a.partner-link(href="https://europa.eu/european-union/index_pt")
-                        img.partners-img.ue(src="img/footer/UE.png", alt="UE")
     
-    
-                .policy
-                    span.policy-link(href="#") © 2015 Eco.AP
-    
-                    a.policy-link(href="http://ecoap.pnaee.pt/ficha-tecnica/") Ficha técnica
-    
-                    a.policy-link(href="https://www.adene.pt/privacidade/") Política de Privacidade
-    -->
   </body>
 </html>

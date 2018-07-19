@@ -393,6 +393,8 @@ body {
           .main .main-content .dados-child #resumo table tbody tr td.center .xInput:-moz-placeholder,
           .main .main-content .dados-child #resumo table tbody .textTR td.center .xInput:-moz-placeholder {
             color: #DCDCDC; }
+    .main .main-content .dados-child .step {
+      display: none; }
 
 .but-2,
 .recolhe-medidas-but,
