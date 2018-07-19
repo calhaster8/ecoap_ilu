@@ -145,7 +145,8 @@ var tipoFonteLuz = [
       INTERIOR,
       INTERIOR,
       INTERIOR
-    ]
+    ],
+    medidas: "0,2,3"
   },
   {
     tipo: "Fluorescente Tubular - T5",
@@ -160,7 +161,8 @@ var tipoFonteLuz = [
       INTERIOR,
       INTERIOR,
       INTERIOR
-    ]
+    ],
+        medidas: "0,2,3"
   },
   {
     tipo: "Fluorescente Tubular - T8",
@@ -175,7 +177,8 @@ var tipoFonteLuz = [
       INTERIOR,
       INTERIOR,
       INTERIOR
-    ]
+    ],
+        medidas: "0,1,2,3"
   },
   {
     tipo: "Halogéneo",
@@ -190,7 +193,8 @@ var tipoFonteLuz = [
       INTERIOR,
       INTERIOR,
       INTERIOR
-    ]
+    ],
+        medidas: "0,2,3"
   },
   {
     tipo: "Incandescente",
@@ -205,7 +209,8 @@ var tipoFonteLuz = [
       INTERIOR,
       INTERIOR,
       INTERIOR
-    ]
+    ],
+    medidas: "0,2,3"
   },
   {
     tipo: "Iodetos Metálicos",
@@ -220,7 +225,8 @@ var tipoFonteLuz = [
       EXTERIOR,
       EXTERIOR,
       EXTERIOR
-    ]
+    ],
+    medidas: "0,2,3"
   },
   {
     tipo: "LED",    //predefinida
@@ -245,7 +251,8 @@ var tipoFonteLuz = [
       EXTERIOR,
       EXTERIOR,
       EXTERIOR
-    ]
+    ],
+    medidas: ""
   },
   {
     tipo: "Vapor de Mercúrio",
@@ -260,7 +267,8 @@ var tipoFonteLuz = [
       EXTERIOR,
       EXTERIOR,
       EXTERIOR
-    ]
+    ],
+    medidas: "0,2,3"
   },
   {
     tipo: "Vapor de Sódio",
@@ -275,7 +283,8 @@ var tipoFonteLuz = [
       EXTERIOR,
       EXTERIOR,
       EXTERIOR
-    ]
+    ],
+    medidas: "0,2,3"
   },
   {
     tipo: "Outra",
@@ -284,7 +293,8 @@ var tipoFonteLuz = [
     potencia: 0,
     aplicacaoPotencia: [
       INTERIOR + ";" + EXTERIOR
-    ]
+    ],
+    medidas: "0,2,3"
   }
 ];
 

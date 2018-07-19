@@ -14,7 +14,7 @@ Geral:
         - Quando é selecionada a opção Retrofit LED na Fonte de Luz, não deverá aparecer (BP) ou (AP), ou seja, essa condição deverá ser gerada apenas em backoffice/background quando efetua o cálculo
         - A medida Reguladores de fluxo (exterior) deveria estar indisponível para a iluminação Interior, ou eliminar da tabela ou então não editável
         - Mudar de "select" para "checkboxes"
-        - Horário: colocar campos de preenchimento (horas, dias, semanas): máximo de 8760 (horas/ano)
+        - Horário: colocar campos de preenchimento (horas, dias, semanas): máximo de 8760 (horas/ano) 
 
       Resumo
         - Gráfico
