@@ -116,62 +116,70 @@ function calculaCenarioFinal() {
     var totalReducao = 0;
 
     for (var i = 1; i <= espacoCount; i++) {
-        poupancaReguladores = 0;
-        poupancaSensores = 0;
-        poupancaSistemaGestao = 0;
-        sistemaGestaoFinal = 0;
-        sensoresFinal = 0;
-        potenciaFinal = calculaPotenciaFinal(cenarioInicial[i].fluxoLuminoso, medidas[medidasDados[i].fonteLuz].poupanca);
-        fonteLuzFinal = calculaFonteLuzFinal(cenarioInicial[i].consumo, potenciaFinal, fonteLuz[i].horasFuncionamento);
-        medidas.forEach(function (medida) {
-            if (medida.tipo.match(estado) && medidasDados[i].reguladoresFluxo == SIM) {
-                poupancaReguladores = medida.poupanca;
+
+        
+            poupancaReguladores = 0;
+            poupancaSensores = 0;
+            poupancaSistemaGestao = 0;
+            sistemaGestaoFinal = 0;
+            sensoresFinal = 0;
+            if(medidasDados[i].fonteLuz!=undefined && medidasDados[i].fonteLuz!="" && medidasDados[i].fonteLuz>=0){
+                potenciaFinal = calculaPotenciaFinal(cenarioInicial[i].fluxoLuminoso, medidas[medidasDados[i].fonteLuz].poupanca);
+            }else{
+                potenciaFinal = cenarioInicial[i].potencia;
             }
-        });
-        reguladoresFinal = calculaMedidasSimNaoFinal(potenciaFinal, poupancaReguladores, fonteLuz[i].horasFuncionamento);
-        if (estado == INTERIOR) {
-            if (medidasDados[i].sensores == SIM) {
-                medidas.forEach(function (medida) {
-                    if (medida.tipo === SENSORES) {
-                        poupancaSensores = medida.poupanca;
-                    }
-                });
-                sensoresFinal = calculaMedidasSimNaoFinal(potenciaFinal, poupancaSensores, fonteLuz[i].horasFuncionamento);
-            }
-        }
-        if (medidasDados[i].sistemaGestao == SIM) {
+            
+            fonteLuzFinal = calculaFonteLuzFinal(cenarioInicial[i].consumo, potenciaFinal, fonteLuz[i].horasFuncionamento);
             medidas.forEach(function (medida) {
-                if (medida.tipo === SISTEMAS_GESTAO) {
-                    poupancaSistemaGestao = medida.poupanca;
+                if (medida.tipo.match(estado) && medidasDados[i].reguladoresFluxo == SIM) {
+                    poupancaReguladores = medida.poupanca;
                 }
             });
-            sistemaGestaoFinal = calculaMedidasSimNaoFinal(potenciaFinal, poupancaSistemaGestao, fonteLuz[i].horasFuncionamento);
-        }
-        consumoFinal = calculaConsumoFinal(cenarioInicial[i].consumo, fonteLuzFinal, reguladoresFinal, sensoresFinal, sistemaGestaoFinal);
-        custoEnergiaFinal = calculaCustoEnergiaFinal(consumoFinal, tipoInstalacao[estadoNum].custo_unit);
-        reducaoAnualFinal = calculaReducaoAnualFinal(cenarioInicial[i].consumo, consumoFinal);
+            reguladoresFinal = calculaMedidasSimNaoFinal(potenciaFinal, poupancaReguladores, fonteLuz[i].horasFuncionamento);
+            if (estado == INTERIOR) {
+                if (medidasDados[i].sensores == SIM) {
+                    medidas.forEach(function (medida) {
+                        if (medida.tipo === SENSORES) {
+                            poupancaSensores = medida.poupanca;
+                        }
+                    });
+                    sensoresFinal = calculaMedidasSimNaoFinal(potenciaFinal, poupancaSensores, fonteLuz[i].horasFuncionamento);
+                }
+            }
+            if (medidasDados[i].sistemaGestao == SIM) {
+                medidas.forEach(function (medida) {
+                    if (medida.tipo === SISTEMAS_GESTAO) {
+                        poupancaSistemaGestao = medida.poupanca;
+                    }
+                });
+                sistemaGestaoFinal = calculaMedidasSimNaoFinal(potenciaFinal, poupancaSistemaGestao, fonteLuz[i].horasFuncionamento);
+            }
+            consumoFinal = calculaConsumoFinal(cenarioInicial[i].consumo, fonteLuzFinal, reguladoresFinal, sensoresFinal, sistemaGestaoFinal);
+            custoEnergiaFinal = calculaCustoEnergiaFinal(consumoFinal, tipoInstalacao[estadoNum].custo_unit);
+            reducaoAnualFinal = calculaReducaoAnualFinal(cenarioInicial[i].consumo, consumoFinal);
 
-        totalPotencia += potenciaFinal;
-        totalFonteLuz += fonteLuzFinal;
-        totalReguladores += reguladoresFinal;
-        totalSensores += sensoresFinal;
-        totalSistemaGestao += sistemaGestaoFinal;
-        totalConsumo += consumoFinal;
-        totalCustoEnergia += custoEnergiaFinal;
-        totalReducao += reducaoAnualFinal;
+            totalPotencia += potenciaFinal;
+            totalFonteLuz += fonteLuzFinal;
+            totalReguladores += reguladoresFinal;
+            totalSensores += sensoresFinal;
+            totalSistemaGestao += sistemaGestaoFinal;
+            totalConsumo += consumoFinal;
+            totalCustoEnergia += custoEnergiaFinal;
+            totalReducao += reducaoAnualFinal;
 
-        cenarioFinal.push({
-            espacoNum: medidasDados[i].espacoNum,
-            designacao: medidasDados[i].designacao,
-            potencia: potenciaFinal,
-            fonteLuz: fonteLuzFinal,
-            reguladoresFluxo: reguladoresFinal,
-            sensores: sensoresFinal,
-            sistemaGestao: sistemaGestaoFinal,
-            consumoFinal: consumoFinal,
-            custoEnergia: custoEnergiaFinal,
-            reducaoAnual: reducaoAnualFinal
-        });
+            cenarioFinal.push({
+                espacoNum: medidasDados[i].espacoNum,
+                designacao: medidasDados[i].designacao,
+                potencia: potenciaFinal,
+                fonteLuz: fonteLuzFinal,
+                reguladoresFluxo: reguladoresFinal,
+                sensores: sensoresFinal,
+                sistemaGestao: sistemaGestaoFinal,
+                consumoFinal: consumoFinal,
+                custoEnergia: custoEnergiaFinal,
+                reducaoAnual: reducaoAnualFinal
+            });
+        
     }
     cenarioFinal[TOTAL].potencia = totalPotencia;
     cenarioFinal[TOTAL].fonteLuz = totalFonteLuz;
@@ -220,56 +228,60 @@ function calculaInvestimento() {
     var totalPri = 0;
 
     for (var i = 1; i <= espacoCount; i++) {
-        reguladoresFluxo = 0;
-        sensores = 0;
-        sistemaGestao = 0;
-        fonteLuzInvestimento = 0;
-        investimentoFL = medidas[medidasDados[i].fonteLuz].investimento;
-        if (fonteLuz[i].quantidade >= descontoInvestimento[0].quantidade) {
-            fonteLuzInvestimento = calculaMedidasInvestimento(investimentoFL, cenarioFinal[i].potencia);
-            fonteLuzInvestimento *= (1 - descontoInvestimento[0].desconto);
-        } else if (fonteLuz[i].quantidade >= descontoInvestimento[1].quantidade) {
-            fonteLuzInvestimento = calculaMedidasInvestimento(investimentoFL, cenarioFinal[i].potencia);
-            fonteLuzInvestimento *= (1 - descontoInvestimento[1].desconto);
-        } else {
-            fonteLuzInvestimento = calculaMedidasInvestimento(investimentoFL, cenarioFinal[i].potencia);
-        }
-        medidas.forEach(function (medida) {
-            if ((medidasDados[i].reguladoresFluxo == SIM) && (medida.tipo.match(estado))) {
-                reguladoresFluxo = calculaMedidasInvestimento(medida.investimento, cenarioFinal[i].potencia);
-            } else if ((medidasDados[i].sensores == SIM) && (medida.tipo === SENSORES) && (estado == INTERIOR)) {
-                sensores = calculaMedidasInvestimento(medida.investimento, cenarioFinal[i].potencia);
-            } else if ((medidasDados[i].sistemaGestao == SIM) && (medida.tipo === SISTEMAS_GESTAO)) {
-                sistemaGestao = calculaMedidasInvestimento(medida.investimento, cenarioFinal[i].potencia);
+            reguladoresFluxo = 0;
+            sensores = 0;
+            sistemaGestao = 0;
+            fonteLuzInvestimento = 0;
+            if(medidasDados[i].fonteLuz!=undefined && medidasDados[i].fonteLuz!="" && medidasDados[i].fonteLuz>=0){
+                investimentoFL = medidas[medidasDados[i].fonteLuz].investimento;
+                if (fonteLuz[i].quantidade >= descontoInvestimento[0].quantidade) {
+                    fonteLuzInvestimento = calculaMedidasInvestimento(investimentoFL, cenarioFinal[i].potencia);
+                    fonteLuzInvestimento *= (1 - descontoInvestimento[0].desconto);
+                } else if (fonteLuz[i].quantidade >= descontoInvestimento[1].quantidade) {
+                    fonteLuzInvestimento = calculaMedidasInvestimento(investimentoFL, cenarioFinal[i].potencia);
+                    fonteLuzInvestimento *= (1 - descontoInvestimento[1].desconto);
+                } else {
+                    fonteLuzInvestimento = calculaMedidasInvestimento(investimentoFL, cenarioFinal[i].potencia);
+                }
+            }else{
+                fonteLuzInvestimento = 0;
             }
-        });
-        investimentoInv = calculaInvestimentoResultadoInvestimento(fonteLuzInvestimento, reguladoresFluxo, sensores, sistemaGestao);
-        reducaoCustos1 = calculaReducaoCustos1Investimento(cenarioInicial[i].custoEnergia, cenarioFinal[i].custoEnergia);
-        reducaoCustos2 = calculaReducaoCustos2Investimento(reducaoCustos1, cenarioInicial[i].custoEnergia);
-        pri = calculaPriInvestimento(investimentoInv, reducaoCustos1);
+            medidas.forEach(function (medida) {
+                if ((medidasDados[i].reguladoresFluxo == SIM) && (medida.tipo.match(estado))) {
+                    reguladoresFluxo = calculaMedidasInvestimento(medida.investimento, cenarioFinal[i].potencia);
+                } else if ((medidasDados[i].sensores == SIM) && (medida.tipo === SENSORES) && (estado == INTERIOR)) {
+                    sensores = calculaMedidasInvestimento(medida.investimento, cenarioFinal[i].potencia);
+                } else if ((medidasDados[i].sistemaGestao == SIM) && (medida.tipo === SISTEMAS_GESTAO)) {
+                    sistemaGestao = calculaMedidasInvestimento(medida.investimento, cenarioFinal[i].potencia);
+                }
+            });
+            investimentoInv = calculaInvestimentoResultadoInvestimento(fonteLuzInvestimento, reguladoresFluxo, sensores, sistemaGestao);
+            reducaoCustos1 = calculaReducaoCustos1Investimento(cenarioInicial[i].custoEnergia, cenarioFinal[i].custoEnergia);
+            reducaoCustos2 = calculaReducaoCustos2Investimento(reducaoCustos1, cenarioInicial[i].custoEnergia);
+            pri = calculaPriInvestimento(investimentoInv, reducaoCustos1);
 
-        //calcula o total dos campos
-        totalFonteLuz += fonteLuzInvestimento;
-        totalReguladores += reguladoresFluxo;
-        totalSensores += sensores;
-        totalSistemaGestao += sistemaGestao;
-        totalInvestimento += investimentoInv;
-        totalReducaoCustos1 += reducaoCustos1;
-        totalReducaoCustos2 += reducaoCustos2;
-        totalPri += pri;
+            //calcula o total dos campos
+            totalFonteLuz += fonteLuzInvestimento;
+            totalReguladores += reguladoresFluxo;
+            totalSensores += sensores;
+            totalSistemaGestao += sistemaGestao;
+            totalInvestimento += investimentoInv;
+            totalReducaoCustos1 += reducaoCustos1;
+            totalReducaoCustos2 += reducaoCustos2;
+            totalPri += pri;
 
-        investimento.push({
-            espacoNum: medidasDados[i].espacoNum,
-            designacao: medidasDados[i].designacao,
-            fonteLuz: fonteLuzInvestimento,
-            reguladoresFluxo: reguladoresFluxo,
-            sensores: sensores,
-            sistemaGestao: sistemaGestao,
-            investimento: investimentoInv,
-            reducaoCustos1: reducaoCustos1,
-            reducaoCustos2: reducaoCustos2,
-            pri: pri
-        });
+            investimento.push({
+                espacoNum: medidasDados[i].espacoNum,
+                designacao: medidasDados[i].designacao,
+                fonteLuz: fonteLuzInvestimento,
+                reguladoresFluxo: reguladoresFluxo,
+                sensores: sensores,
+                sistemaGestao: sistemaGestao,
+                investimento: investimentoInv,
+                reducaoCustos1: reducaoCustos1,
+                reducaoCustos2: reducaoCustos2,
+                pri: pri
+            });
     }
     investimento[TOTAL].fonteLuz = totalFonteLuz;
     investimento[TOTAL].reguladoresFluxo = totalReguladores;
@@ -279,5 +291,5 @@ function calculaInvestimento() {
     investimento[TOTAL].reducaoCustos1 = totalReducaoCustos1;
     investimento[TOTAL].reducaoCustos2 = totalReducaoCustos2;
     investimento[TOTAL].pri = calculaPriInvestimento(totalInvestimento, totalReducaoCustos1);
-    //alert(JSON.stringify(investimento));
+   
 }

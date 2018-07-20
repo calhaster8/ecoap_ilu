@@ -231,13 +231,21 @@ function buildMedidas() {
         newEspaco.find("td").eq(1).html(espaco[i].designacao);
         newEspaco.find("td").eq(2).find("select").attr("id", "fonte-luz-medidas" + i);
 
-        var medidasFonteLuz = tipoFonteLuz[fonteLuz[i].tipo].medidas.split(",");
+        var medidasFonteLuz = [];
+        medidasFonteLuz = tipoFonteLuz[fonteLuz[i].tipo].medidas.split(",");
         for (k = 0; k < medidas.length; k++) {
-            if (medidasFonteLuz.includes("" + k) && fonteLuz[i].potenciaUnitFinal != medidas[k].nome) {
-                if(medidas[k].nome.search("(AP)")>0 || medidas[k].nome.search("(BP)")>0){
-                    var replace = medidas[k].nome.search("(AP)")>0? medidas[k].nome.search("(AP)") : medidas[k].nome.search("(BP)");                    
-                    newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome.substring(0, replace-1)));
-                }else{
+            var medidasLuz = false;
+            for (h = 0; h < medidasFonteLuz.length; h++) {
+                if (medidasFonteLuz[h] != "" && medidasFonteLuz[h] != undefined && medidasFonteLuz[h] == k) {
+                    medidasLuz = true;
+                    break;
+                }
+            }
+            if (medidasLuz && fonteLuz[i].potenciaUnitFinal != medidas[k].nome) {
+                if (medidas[k].nome.search("(AP)") > 0 || medidas[k].nome.search("(BP)") > 0) {
+                    var replace = medidas[k].nome.search("(AP)") > 0 ? medidas[k].nome.search("(AP)") : medidas[k].nome.search("(BP)");
+                    newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome.substring(0, replace - 1)));
+                } else {
                     newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome));
                 }
             }
@@ -475,7 +483,7 @@ function recolheFonteLuz() {
             medidasUpgrade: tipoFonteLuz[tipo].medidas
         });
     }
-    
+
     checkCamposFonteLuz();
 }
 
@@ -527,7 +535,7 @@ function checkCamposMedidas() {
     var faltaPreencher = false;
     for (var i = 1; i < medidasDados.length; i++) {
         if (estado == EXTERIOR) {
-            if ((medidasDados[i].fonteLuz !== "") && (medidasDados[i].reguladoresFluxo !== "") && (medidasDados[i].sistemaGestao !== "")) {
+            if ((medidasDados[i].reguladoresFluxo !== "") && (medidasDados[i].sistemaGestao !== "")) {
                 continue;
             } else {
                 alert("Faltam preencher campos");
@@ -535,7 +543,7 @@ function checkCamposMedidas() {
                 break;
             }
         } else if (estado == INTERIOR) {
-            if ((medidasDados[i].fonteLuz !== "") && (medidasDados[i].reguladoresFluxo !== "") && (medidasDados[i].sensores !== "") && (medidasDados[i].sistemaGestao !== "")) {
+            if ((medidasDados[i].reguladoresFluxo !== "") && (medidasDados[i].sensores !== "") && (medidasDados[i].sistemaGestao !== "")) {
                 continue;
             } else {
                 alert("Faltam preencher campos");
@@ -582,7 +590,7 @@ function buildResumo() {
     resumoCenarios[1].consumoAnual = cenarioFinal[TOTAL].consumoFinal.toFixed(0);
     resumoCenarios[1].custosEnergeticos = cenarioFinal[TOTAL].custoEnergia.toFixed(0);
     resumoGeral.reducaoCustos1 = investimento[TOTAL].reducaoCustos1.toFixed(0);
-    resumoGeral.reducaoCustos2 = (resumoGeral.reducaoCustos1/resumoCenarios[0].custosEnergeticos * 100).toFixed(0);
+    resumoGeral.reducaoCustos2 = (resumoGeral.reducaoCustos1 / resumoCenarios[0].custosEnergeticos * 100).toFixed(0);
     resumoGeral.investimento = investimento[TOTAL].investimento.toFixed(0);
     resumoGeral.payback = investimento[TOTAL].pri.toFixed(1);
     //cenario inicial
@@ -612,6 +620,7 @@ function nextStep() {
     if ($('.anterior:hidden').length > 1) {
         $('.anterior').show();
         $('.custo-iluminacao-box').hide();
+        $('#tipo-iluminacao').attr('disabled', 'disabled').addClass('sel-disable');
     }
 
     if (nextId == 2) {
@@ -647,6 +656,7 @@ function prevStep() {
         $('.end-step').hide();
         $('.anterior').hide();
         $('.custo-iluminacao-box').show();
+        $('#tipo-iluminacao').removeAttr('disabled', 'disabled').removeClass('sel-disable');
     }
 
     if (prevId == 2) {
@@ -663,14 +673,6 @@ function prevStep() {
         $('.resumo-but').show();
     }
 }
-//
-//function reguladoresChange() {
-//  if ($('#tipo-iluminacao').val() == 0) {
-//    $('.reg-exterior').hide();
-//  } else if ($('#tipo-iluminacao').val() == 1) {
-//    $('.reg-exterior').show();
-//  }
-//}
 
 
 /*MAIN*/
@@ -692,6 +694,16 @@ $(document).ready(function () {
 
     $('#resumo-but').on('click', function () {
         recolheMedidas();
+    });
+
+    $('#tipo-iluminacao').change(function () {
+        if ($('#tipo-iluminacao').val() == 0 && $('#tipo-iluminacao').val() != "") {
+            $("#exterior-ilu").hide();
+            $("#interior-ilu").show();
+        } else if ($('#tipo-iluminacao').val() == 1 && $('#tipo-iluminacao').val() != "") {
+            $("#exterior-ilu").show();
+            $("#interior-ilu").hide();
+        }
     });
 
 });
