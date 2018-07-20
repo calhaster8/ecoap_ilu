@@ -123,7 +123,9 @@ function calculaCenarioFinal() {
             poupancaSistemaGestao = 0;
             sistemaGestaoFinal = 0;
             sensoresFinal = 0;
-            if(medidasDados[i].fonteLuz!=undefined && medidasDados[i].fonteLuz!="" && medidasDados[i].fonteLuz>=0){
+            if(fonteLuz[i].rendimento!=tipoFonteLuz[fonteLuz[i].tipo].rendimento && (medidasDados[i].fonteLuz==null || medidasDados[i].fonteLuz==undefined || medidasDados[i].fonteLuz=="")){
+                potenciaFinal = calculaPotenciaFinal(cenarioInicial[i].fluxoLuminoso,fonteLuz[i].rendimento);
+            }else if(medidasDados[i].fonteLuz!=undefined && medidasDados[i].fonteLuz!="" && medidasDados[i].fonteLuz!=null && medidasDados[i].fonteLuz>=0){
                 potenciaFinal = calculaPotenciaFinal(cenarioInicial[i].fluxoLuminoso, medidas[medidasDados[i].fonteLuz].poupanca);
             }else{
                 potenciaFinal = cenarioInicial[i].potencia;

@@ -244,9 +244,9 @@ function buildMedidas() {
             if (medidasLuz && fonteLuz[i].potenciaUnitFinal != medidas[k].nome) {
                 if (medidas[k].nome.search("(AP)") > 0 || medidas[k].nome.search("(BP)") > 0) {
                     var replace = medidas[k].nome.search("(AP)") > 0 ? medidas[k].nome.search("(AP)") : medidas[k].nome.search("(BP)");
-                    newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome.substring(0, replace - 1)));
+                    newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome.substring(0, replace - 1) + " ("+ medidas[k].poupanca +" lm/W)"));
                 } else {
-                    newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome));
+                    newEspaco.find("td").eq(2).find("#fonte-luz-medidas" + i).append($('<option class="op"> </option>').val(k).html(medidas[k].nome + " ("+ medidas[k].poupanca +" lm/W)"));
                 }
             }
         }
@@ -639,6 +639,7 @@ function nextStep() {
         $('.but-2').hide();
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
+        $('#reload-but').show();
 
         $('.resumo-but').hide();
     }
@@ -696,6 +697,9 @@ $(document).ready(function () {
         recolheMedidas();
     });
 
+    $('#reload-but').click(function(){
+        location.reload();
+    });
     $('#tipo-iluminacao').change(function () {
         if ($('#tipo-iluminacao').val() == 0 && $('#tipo-iluminacao').val() != "") {
             $("#exterior-ilu").hide();

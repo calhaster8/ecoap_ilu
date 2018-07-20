@@ -219,7 +219,8 @@ var tipoFonteLuz = [
     potencia: [
       100,
       150,
-      250
+      250,
+      400
     ],
     aplicacaoPotencia: [
       EXTERIOR,
@@ -252,7 +253,7 @@ var tipoFonteLuz = [
       EXTERIOR,
       EXTERIOR
     ],
-    medidas: ""
+    medidas: "0,2,3"
   },
   {
     tipo: "Vapor de Mercúrio",
@@ -277,7 +278,8 @@ var tipoFonteLuz = [
     potencia: [
       70,
       100,
-      150
+      150,
+      250
     ],
     aplicacaoPotencia: [
       EXTERIOR,
