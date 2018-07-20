@@ -167,7 +167,35 @@ body
                         background-image: none
                         color: #fff
 
+            #fonte-luz
+                position: relative
 
+                .popup-text
+                    font-size: .9em
+                    font-weight: 300
+                    text-transform: none
+                    width: 235px
+                    //background-color: #555
+                    background-color: #ffffff
+                    border: 1px solid rgba(0,0,0,.1)
+                    color: #4D4D4D
+                    text-align: center
+                    border-radius: 6px
+                    padding: 8px 2px
+                    position: absolute
+                    z-index: 1
+                    right: 150px
+                    top: 0
+
+                    &::after
+                        content: ''
+                        font-family: 'Amelia-Basic-Light', sans-serif
+                        position: absolute
+                        top: 100%
+                        left: 30%
+                        border-width: 8px
+                        border-style: solid
+                        border-color: #fff transparent transparent transparent
 
             .tabelas
                 span
@@ -295,6 +323,59 @@ body
                             td.outro-hide
                                 display: none
 
+                            td.check-cell
+                                width: 150px
+                                //height: 20px
+                                background: #fff
+                                margin: 20px auto
+                                position: relative
+                                //border-radius: 50px
+                                //box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2)
+                                
+                                &:after
+                                    content: 'Não'
+                                    color: #0099cc
+                                    position: absolute
+                                    right: 10px
+                                    top: 10px
+                                    z-index: 0
+                                    font: 1em Amelia-Basic-Light, sans-serif
+                                    font-weight: bold
+                                
+                                &:before
+                                    content: 'Sim'
+                                    color: #0099cc
+                                    position: absolute
+                                    left: 10px
+                                    top: 10px
+                                    z-index: 0
+                                    font: 1em Amelia-Basic-Light, sans-serif
+                                    font-weight: bold
+                                
+                                label
+                                    display: block
+                                    width: 50%
+                                    height: 100%
+                                    cursor: pointer
+                                    position: absolute
+                                    top: 0px
+                                    left: 0px
+                                    z-index: 1
+                                    background: #ffffff
+                                    border: 2px solid rgba(0,0,0,.1)
+                                    //border-radius: 50px
+                                    transition: all 0.4s ease
+                                    //box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3)
+                                
+                                input[type=checkbox]
+                                    visibility: hidden
+                                    //z-index: 2
+                                    
+                                    &:checked + label
+                                        left: 75px
+                                    
+                                
+
 
             #resumo
                 span
@@ -352,7 +433,6 @@ body
 
                                 .xInput:-moz-placeholder /* Firefox 18- */
                                     color: #DCDCDC
-
 
             .step
                 display: none

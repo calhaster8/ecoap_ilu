@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: Amelia-Basic;
   src: url("../fonts/Amelia/Amelia-Basic.otf"); }
@@ -138,6 +139,32 @@ body {
           background-color: #0099cc;
           background-image: none;
           color: #fff; }
+    .main .main-content .dados-child #fonte-luz {
+      position: relative; }
+      .main .main-content .dados-child #fonte-luz .popup-text {
+        font-size: .9em;
+        font-weight: 300;
+        text-transform: none;
+        width: 235px;
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #4D4D4D;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 2px;
+        position: absolute;
+        z-index: 1;
+        right: 150px;
+        top: 0; }
+        .main .main-content .dados-child #fonte-luz .popup-text::after {
+          content: '';
+          font-family: 'Amelia-Basic-Light', sans-serif;
+          position: absolute;
+          top: 100%;
+          left: 30%;
+          border-width: 8px;
+          border-style: solid;
+          border-color: #fff transparent transparent transparent; }
     .main .main-content .dados-child .tabelas span {
       text-align: left;
       text-transform: uppercase;
@@ -270,6 +297,51 @@ body {
         .main .main-content .dados-child .tabelas table tbody tr td.outro-hide,
         .main .main-content .dados-child .tabelas table tbody .textTR td.outro-hide {
           display: none; }
+        .main .main-content .dados-child .tabelas table tbody tr td.check-cell,
+        .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell {
+          width: 150px;
+          background: #fff;
+          margin: 20px auto;
+          position: relative; }
+          .main .main-content .dados-child .tabelas table tbody tr td.check-cell:after,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell:after {
+            content: 'Não';
+            color: #0099cc;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 0;
+            font: 1em Amelia-Basic-Light, sans-serif;
+            font-weight: bold; }
+          .main .main-content .dados-child .tabelas table tbody tr td.check-cell:before,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell:before {
+            content: 'Sim';
+            color: #0099cc;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            z-index: 0;
+            font: 1em Amelia-Basic-Light, sans-serif;
+            font-weight: bold; }
+          .main .main-content .dados-child .tabelas table tbody tr td.check-cell label,
+          .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell label {
+            display: block;
+            width: 50%;
+            height: 100%;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 1;
+            background: #ffffff;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease; }
+          .main .main-content .dados-child .tabelas table tbody tr td.check-cell input[type=checkbox],
+          .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell input[type=checkbox] {
+            visibility: hidden; }
+            .main .main-content .dados-child .tabelas table tbody tr td.check-cell input[type=checkbox]:checked + label,
+            .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell input[type=checkbox]:checked + label {
+              left: 75px; }
     .main .main-content .dados-child #resumo span {
       text-align: left;
       text-transform: uppercase;
