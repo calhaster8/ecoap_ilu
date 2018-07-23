@@ -429,18 +429,22 @@ body {
   .but-2 button#resumo-but,
   .but-2 button#fonte-luz-but,
   .but-2 button#medidas-but,
+  .but-2 button#reload-but,
   .recolhe-medidas-but button#analise-but,
   .recolhe-medidas-but button#resumo-but,
   .recolhe-medidas-but button#fonte-luz-but,
   .recolhe-medidas-but button#medidas-but,
+  .recolhe-medidas-but button#reload-but,
   .end-step button#analise-but,
   .end-step button#resumo-but,
   .end-step button#fonte-luz-but,
   .end-step button#medidas-but,
+  .end-step button#reload-but,
   .analise button#analise-but,
   .analise button#resumo-but,
   .analise button#fonte-luz-but,
-  .analise button#medidas-but {
+  .analise button#medidas-but,
+  .analise button#reload-but {
     float: right; }
   .but-2 .anterior,
   .recolhe-medidas-but .anterior,
