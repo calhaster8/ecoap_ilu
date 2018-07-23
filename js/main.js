@@ -670,7 +670,7 @@ function prevStep() {
         $('.but-2').hide();
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
-
+        $('#reload-but').hide();
         $('.resumo-but').show();
     }
 }
@@ -700,6 +700,7 @@ $(document).ready(function () {
     $('#reload-but').click(function(){
         location.reload();
     });
+    
     $('#tipo-iluminacao').change(function () {
         if ($('#tipo-iluminacao').val() == 0 && $('#tipo-iluminacao').val() != "") {
             $("#exterior-ilu").hide();
