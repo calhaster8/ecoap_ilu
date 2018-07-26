@@ -328,6 +328,7 @@ function checkTipoIluminacao() {
         if ($("#tipo-iluminacao").val() != "") {
             $("#custo-unit-iluminacao-titulo").show();
             $("#custo-unit-iluminacao").show();
+            $("#custo-unit-iluminacao-titulo-label").show();
             $("#custo-unit-iluminacao").val(tipoInstalacao[$("#tipo-iluminacao").val()].custo_unit);
             $("#iluminacao").show();
 
@@ -345,6 +346,8 @@ function checkTipoIluminacao() {
         } else {
             $("#iluminacao").hide();
             $("#custo-unit-iluminacao").hide();
+            $("#custo-unit-iluminacao-titulo").hide();
+            $("#custo-unit-iluminacao-titulo-label").hide();
         }
     });
 }
@@ -640,7 +643,7 @@ function nextStep() {
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
         $('#reload-but').show();
-
+        $('.print_pdf').show()
         $('.resumo-but').hide();
     }
 }
