@@ -455,6 +455,14 @@ body {
 .step-but {
   display: none; }
 
+button.print_link {
+  border: none;
+  color: #0099cc;
+  text-decoration: underline; }
+
+button.print_link:focus {
+  outline: none; }
+
 .but-2::after,
 .recolhe-medidas-but::after,
 .analise::after,
@@ -462,47 +470,3 @@ body {
   content: '';
   clear: both;
   display: table; }
-
-footer {
-  height: 200px;
-  background-color: #fff;
-  border-top: 1px solid rgba(0, 153, 204, 0.7);
-  margin-top: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  footer .partners {
-    padding: 20px 0;
-    text-align: center; }
-    footer .partners .partners-img {
-      width: 20%;
-      margin: 10px; }
-    footer .partners .rep-port {
-      width: 9%; }
-    footer .partners .port-energia {
-      width: 9%; }
-    footer .partners .dgeg {
-      width: 12%; }
-    footer .partners .lnec {
-      width: 10%; }
-    footer .partners .ee {
-      width: 4%; }
-    footer .partners .adene {
-      width: 9%; }
-    footer .partners .posteur {
-      width: 9%; }
-    footer .partners .port-2020 {
-      width: 9%; }
-    footer .partners .ue {
-      width: 11%; }
-    footer .partners .conf-text {
-      display: inline-block; }
-    footer .partners .partner-link {
-      margin: 0 10px; }
-  footer .policy {
-    padding: 10px;
-    text-align: center; }
-    footer .policy .policy-link {
-      margin-right: 20px;
-      text-decoration: none;
-      color: #0083c4; }
