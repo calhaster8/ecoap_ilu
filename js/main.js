@@ -461,10 +461,15 @@ function recolheFonteLuz() {
         var quantidade = $(elementos[i]).find("td").eq(2).find("input").val();
         var rendimento = $(elementos[i]).find("td").eq(7).find("input").val();
         var tipo = $(elementos[i]).find("td").eq(3).find("select").val();
-        if (tipo == OUTROS)
-            var potencia = $(elementos[i]).find("td").eq(5).find("input").val();
-        else
-            var potencia = tipoFonteLuz[tipo].potencia[$(elementos[i]).find("td").eq(4).find("select").val()];
+        var potencia = 0;
+        if (tipo!==undefined && tipo!=="" && tipo == OUTROS){
+            potencia = $(elementos[i]).find("td").eq(5).find("input").val();
+        } else if(tipo!=undefined && tipo!=="" && tipo>=0){
+            potencia = tipoFonteLuz[tipo].potencia[$(elementos[i]).find("td").eq(4).find("select").val()];
+        }else{
+            alert("Faltam preencher campos");
+            break;
+        }
 
         var potenciaUnitFinal = calculaAP_BP(potencia, tipoFonteLuz[tipo].rendimento, tipoFonteLuz[LED].rendimento);
         //Está invertido para saber qual é o que não é para mostrar
@@ -501,7 +506,7 @@ function checkCamposFonteLuz() {
             break;
         }
     }
-    if (!faltaPreencher) {
+    if (!faltaPreencher && fonteLuz.length>1) {
         //$("#medidas").show();
         nextStep();
         firstTimeMedidas = false;
@@ -592,10 +597,10 @@ function buildResumo() {
     resumoCenarios[1].potencia = cenarioFinal[TOTAL].potencia.toFixed(0);
     resumoCenarios[1].consumoAnual = cenarioFinal[TOTAL].consumoFinal.toFixed(0);
     resumoCenarios[1].custosEnergeticos = cenarioFinal[TOTAL].custoEnergia.toFixed(0);
-    resumoGeral.reducaoCustos1 = investimento[TOTAL].reducaoCustos1.toFixed(0);
-    resumoGeral.reducaoCustos2 = (resumoGeral.reducaoCustos1 / resumoCenarios[0].custosEnergeticos * 100).toFixed(0);
+     resumoGeral.reducaoCustos1 = investimento[TOTAL].reducaoCustos1.toFixed(0);
+    resumoGeral.reducaoCustos2 = !isNaN(resumoCenarios[0].custosEnergeticos) ? (resumoGeral.reducaoCustos1 / resumoCenarios[0].custosEnergeticos * 100).toFixed(0) : ' - ';
     resumoGeral.investimento = investimento[TOTAL].investimento.toFixed(0);
-    resumoGeral.payback = investimento[TOTAL].pri.toFixed(1);
+    resumoGeral.payback = !isNaN(investimento[TOTAL].pri) ? investimento[TOTAL].pri.toFixed(1) : ' - ';
     //cenario inicial
     $("#potencia-1-resumo").html(resumoCenarios[INICIAL].potencia + ' W');
     $("#consumo-anual-1-resumo").html(resumoCenarios[INICIAL].consumoAnual + ' kWh');
