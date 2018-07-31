@@ -225,6 +225,7 @@ var tipoFonteLuz = [
     aplicacaoPotencia: [
       EXTERIOR,
       EXTERIOR,
+      EXTERIOR,
       EXTERIOR
     ],
     medidas: "0,2,3"
@@ -282,6 +283,7 @@ var tipoFonteLuz = [
       250
     ],
     aplicacaoPotencia: [
+      EXTERIOR,
       EXTERIOR,
       EXTERIOR,
       EXTERIOR

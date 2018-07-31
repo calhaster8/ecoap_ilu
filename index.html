@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -70,7 +70,7 @@
                                                 <th colspan="8" class="tituloTH">Fontes de Luz</th>
                                             </tr>
                                             <tr class="titulo_row">
-                                                <th class="tituloTH">Qt.</th>
+                                                <th class="tituloTH">Nº de Lâmpadas</th>
                                                 <th class="tituloTH">Tipo</th>
                                                 <th class="tituloTH">Potência (W)</th>
                                                 <th class="tituloTH">Horas Anuais de funcionamento *</th>
@@ -96,7 +96,7 @@
                                                     <input type="number" name="potencia-fonte-luz" placeholder="0" class="form-control xInput" min="0"/>
                                                 </td>
                                                 <td class="in">
-                                                    <input type="number" placeholder="0" class="form-control xInput" min="0" max="8760"/>
+                                                    <input id="horasFuncionamento" type="number" placeholder="0" class="form-control xInput" min="0" max="8760"/>
                                                 </td>
                                                 <td id="rendimento-td" class="in">
                                                     <input id="rendimento-input" type="number" placeholder="0" class="form-control xInput" min="0"/>
@@ -141,10 +141,6 @@
                                                         <option value="">Seleccionar opção</option>
                                                     </select>
                                                 </td>
-                                                <!--<td class="check-cell slidebox">
-                                                  <input type="checkbox" value="None" id="regulador-slide" name="check"/>
-                                                  <label for="regulador-slide"></label>
-                                                </td>-->
                                                 <td class="select-cell interior">
                                                     <select id="sensores-medidas" name="sensores-medidas" class="sel">
                                                         <option value="">Seleccionar opção</option>
@@ -155,10 +151,6 @@
                                                         <option value="">Seleccionar opção</option>
                                                     </select>
                                                 </td>
-                                                <!--<td class="check-cell slidebox">
-                                                  <input type="checkbox" value="None" id="sistemas-slide" name="check" />
-                                                  <label for="sistemas-slide"></label>
-                                                </td>-->
                                             </tr>
                                             <tr id="total-medidas-row" class="textTR">                      
                                             </tr>

@@ -498,7 +498,11 @@ function recolheFonteLuz() {
 function checkCamposFonteLuz() {
     var faltaPreencher = false;
     for (var i = 1; i < fonteLuz.length; i++) {
-        if ((fonteLuz[i].quantidade >= 0) && (fonteLuz[i].tipo !== "") && (fonteLuz[i].potencia !== "") && (fonteLuz[i].horasFuncionamento > 0)) {
+        if ((fonteLuz[i].horasFuncionamento < 0 || fonteLuz[i].horasFuncionamento >8760)) {              
+            alert($("#tipo-iluminacao").val()==1 ? "ERRO -  Horas de funconamento devem ser 11h/dia x 365dias/ano = 4015 hora" : "ERRO -  Horas de funconamento devem ser 8h/dia x 5dias/semana x 52semanas/ano = 2080 horas");
+            faltaPreencher = true;
+            break;
+        } else if ((fonteLuz[i].quantidade >= 0) && (fonteLuz[i].tipo !== "") && (fonteLuz[i].potencia !== "") && (fonteLuz[i].horasFuncionamento > 0 && fonteLuz[i].horasFuncionamento <=8760)) {
             continue;
         } else {
             alert("Faltam preencher campos");
