@@ -614,7 +614,7 @@ function buildResumo() {
     $("#consumo-anual-2-resumo").html(resumoCenarios[FINAL].consumoAnual + ' kWh');
     $("#custos-energeticos-2-resumo").html(resumoCenarios[FINAL].custosEnergeticos + ' €');
 
-    $("#reducao-consumos-1-resumo").html((resumoCenarios[FINAL].consumoAnual-resumoCenarios[INICIAL].consumoAnual) + ' kWh');
+    $("#reducao-consumos-1-resumo").html((resumoCenarios[INICIAL].consumoAnual-resumoCenarios[FINAL].consumoAnual) + ' kWh');
     $("#reducao-consumos-2-resumo").html(((100-resumoCenarios[FINAL].consumoAnual)/resumoCenarios[INICIAL].consumoAnual).toFixed(0) + '%');
 
     $("#reducao-custos-1-resumo").html(resumoGeral.reducaoCustos1 + ' €');
@@ -638,6 +638,7 @@ function nextStep() {
     }
 
     if (nextId == 2) {
+        $(".dados-titulo").hide();
         $('.but-2').hide();
         $('.recolhe-medidas-but').show();
         $('.end-step').hide();
@@ -666,6 +667,7 @@ function prevStep() {
     $('[data-id="' + prevId + '"]').show();
 
     if (prevId == 1) {
+        $(".dados-titulo").show();
         $('.but-2').show();
         $('.recolhe-medidas-but').hide();
         $('.end-step').hide();
