@@ -615,7 +615,7 @@ function buildResumo() {
     $("#custos-energeticos-2-resumo").html(resumoCenarios[FINAL].custosEnergeticos + ' €');
 
     $("#reducao-consumos-1-resumo").html((resumoCenarios[INICIAL].consumoAnual-resumoCenarios[FINAL].consumoAnual) + ' kWh');
-    $("#reducao-consumos-2-resumo").html(((100-resumoCenarios[FINAL].consumoAnual)/resumoCenarios[INICIAL].consumoAnual).toFixed(0) + '%');
+    $("#reducao-consumos-2-resumo").html(((1-resumoCenarios[FINAL].consumoAnual/resumoCenarios[INICIAL].consumoAnual)*100).toFixed(0) + '%');
 
     $("#reducao-custos-1-resumo").html(resumoGeral.reducaoCustos1 + ' €');
     $("#reducao-custos-2-resumo").html(resumoGeral.reducaoCustos2 + '%');
