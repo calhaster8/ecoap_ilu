@@ -601,7 +601,7 @@ function buildResumo() {
     resumoCenarios[1].potencia = cenarioFinal[TOTAL].potencia.toFixed(0);
     resumoCenarios[1].consumoAnual = cenarioFinal[TOTAL].consumoFinal.toFixed(0);
     resumoCenarios[1].custosEnergeticos = cenarioFinal[TOTAL].custoEnergia.toFixed(0);
-     resumoGeral.reducaoCustos1 = investimento[TOTAL].reducaoCustos1.toFixed(0);
+    resumoGeral.reducaoCustos1 = investimento[TOTAL].reducaoCustos1.toFixed(0);
     resumoGeral.reducaoCustos2 = !isNaN(resumoCenarios[0].custosEnergeticos) ? (resumoGeral.reducaoCustos1 / resumoCenarios[0].custosEnergeticos * 100).toFixed(0) : ' - ';
     resumoGeral.investimento = investimento[TOTAL].investimento.toFixed(0);
     resumoGeral.payback = !isNaN(investimento[TOTAL].pri) ? investimento[TOTAL].pri.toFixed(1) : ' - ';
@@ -620,7 +620,12 @@ function buildResumo() {
     $("#reducao-custos-1-resumo").html(resumoGeral.reducaoCustos1 + ' €');
     $("#reducao-custos-2-resumo").html(resumoGeral.reducaoCustos2 + '%');
     $("#investimento-resumo").html(resumoGeral.investimento + ' €');
-    $("#payback-resumo").html(resumoGeral.payback + ' anos');
+
+    if (resumoGeral.payback < 0) {
+        $("#payback-resumo").html(' -');
+    } else {
+        $("#payback-resumo").html(resumoGeral.payback + ' anos');
+    }
 }
 
 
