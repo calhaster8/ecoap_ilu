@@ -102,6 +102,8 @@ function buildDadosTable() {
         $("#total-area").html(total + " m2");
     });
 
+
+
 }
 
 function buildEspaco() {
@@ -729,6 +731,17 @@ $(document).ready(function () {
         } else if ($('#tipo-iluminacao').val() == 1 && $('#tipo-iluminacao').val() != "") {
             $("#exterior-ilu").show();
             $("#interior-ilu").hide();
+        }
+    });
+
+    $('#ilu-form').validate({
+        rules: {
+            'tipo-iluminacao': {
+                required: true
+            }
+        },
+        messages: {
+            'tipo-iluminacao': '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>'
         }
     });
 

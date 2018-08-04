@@ -11,20 +11,21 @@
         <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"/>
         <link rel="shortcut icon" href="img/logo-head-small.png" type="image/png"/>
         <!--BOOTSTRAP CDN-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <!--CUSTOM CSS-->
         <link rel="stylesheet" href="css/normalize.css"/>
         <link rel="stylesheet" href="css/style.css"/>
         <!--BOOTSTRAP + JQUERY CDN-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/jquery.min.js" ></script>
+        <script src="js/bootstrap.min.js"></script>
         <!--CUSTOM JS-->
         <script src="js/plugins.js"></script>
         <script src="js/info.js"></script>
         <script src="js/main.js"></script>
         <script src="js/calculos.js"></script>
         <script src="js/cenarios.js"></script>    
-        <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+        <script src="js/print.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
         <title>Calculadora - Iluminação</title>
     </head>
     <body>
@@ -33,211 +34,219 @@
 
         </header>
         <main class="main container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="main-content">
-                        <!--Dados-->
-                        <div id="dados">
-                            <div class="dados-titulo"><span class="first">Dados</span></div>
-                            <div class="dados-child">
-                                <div class="dado">
-                                    <!--Tipo de iluminação-->
-                                    <div class="tipo-iluminacao-box">
-                                        <label for="tipo-iluminacao">Tipo de instalação</label>
-                                        <select id="tipo-iluminacao" name="tipo-iluminacao" class="sel">
-                                            <option value="">Seleccionar opção</option>
-                                        </select>
+            <form id="ilu-form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-content">
+                            <!--Dados-->
+                            <div id="dados">
+                                <div class="dados-titulo">
+                                    <span class="first">Dados</span>
+                                </div>
+                                <div class="dados-child">
+                                    <div class="dado">
+                                        <!--Tipo de iluminação-->
+                                        <div class="tipo-iluminacao-box">
+                                            <label for="tipo-iluminacao">Tipo de instalação</label>
+                                            <select id="tipo-iluminacao" name="tipo-iluminacao" class="sel">
+                                                <option value="">Seleccionar opção</option>
+                                            </select>
+                                        </div>
+                                        <div class="custo-iluminacao-box">
+                                            <label id="custo-unit-iluminacao-titulo" for="custo-unit-ilumonacao" hidden="hidden">Custo unitário (€/kWh)</label>
+                                            <label id="custo-unit-iluminacao-titulo-label" style="font-size:14px;" hidden="hidden">(Usar "." (ponto) como separador das casas decimais)</label>
+                                            <input id="custo-unit-iluminacao" name="custo-unit-iluminacao" type="number" value="" step="0.01" hidden="hidden" class="custo-ilum"
+                                                min="0" />
+                                        </div>
                                     </div>
-                                    <div class="custo-iluminacao-box">   
-                                        <label id="custo-unit-iluminacao-titulo" for="custo-unit-ilumonacao" hidden="hidden">Custo unitário (€/kWh)</label>
-                                        <label id="custo-unit-iluminacao-titulo-label" style="font-size:14px;" hidden="hidden">(Usar "." (ponto) como separador das casas decimais)</label>
-                                        <input id="custo-unit-iluminacao" name="custo-unit-iluminacao" type="number" value="" step="0.01" hidden="hidden" class="custo-ilum" min="0"/>
+                                    <!--Iluminação interior e exterior-->
+                                    <!-- step-->
+                                    <div id="iluminacao" hidden="hidden" data-id="1" class="tabelas step">
+                                        <span>Iluminação</span>
+                                        <div id="espacos-iluminacao" name="espacos-iluminacao"></div>
                                     </div>
-                                </div>
-                                <!--Iluminação interior e exterior-->
-                                <!-- step-->
-                                <div id="iluminacao" hidden="hidden" data-id="1" class="tabelas step"><span>Iluminação</span>
-                                    <div id="espacos-iluminacao" name="espacos-iluminacao"></div>
-                                </div>
-                                <!-- step-->
-                                <div id="fonte-luz" data-id="2" class="tabelas step">
-                                    <span>Fonte de luz</span>                  
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr class="titulo_row">
-                                                <th rowspan="2" class="tituloTH">Espaço</th>
-                                                <th rowspan="2" class="tituloTH">Designação</th>
-                                                <th colspan="8" class="tituloTH">Fontes de Luz</th>
-                                            </tr>
-                                            <tr class="titulo_row">
-                                                <th class="tituloTH">Nº de Lâmpadas</th>
-                                                <th class="tituloTH">Tipo</th>
-                                                <th class="tituloTH">Potência (W)</th>
-                                                <th class="tituloTH">Horas Anuais de funcionamento *</th>
-                                                <th class="tituloTH">Rendimento (lm/W)</th>
-                                            </tr>
-                                            <tr id="espaco-fonte-luz" name="espaco-fonte-luz" hidden="hidden" class="classTR">
-                                                <td class="in">1</td>
-                                                <td class="in"></td>
-                                                <td class="in">
-                                                    <input type="number" name="quantidade-fonte-luz" class="form-control xInput" min="0"/>
-                                                </td>
-                                                <td class="select-cell-2">
-                                                    <select id="tipo-fonte-luz" name="tipo-fonte-luz">
-                                                        <option value="">Seleccionar opção</option>
-                                                    </select>
-                                                </td>
-                                                <td class="select-cell-2 outro-sel">
-                                                    <select id="potencia-fonte-luz" name="potencia-fonte-luz" class="potencia-fonte-luz">
-                                                        <option value="">Seleccionar opção</option>
-                                                    </select>
-                                                </td>
-                                                <td id="potencia-fonte-luz-input" hidden="hidden" class="in outro-input potencia-fonte-luz">
-                                                    <input type="number" name="potencia-fonte-luz" placeholder="0" class="form-control xInput" min="0"/>
-                                                </td>
-                                                <td class="in">
-                                                    <input id="horasFuncionamento" type="number" placeholder="0" class="form-control xInput" min="0" max="8760"/>
-                                                </td>
-                                                <td id="rendimento-td" class="in">
-                                                    <input id="rendimento-input" type="number" placeholder="0" class="form-control xInput" min="0"/>
-                                                </td>
-                                            </tr>
-                                            <tr id="total-fonte-luz-row" class="textTR">
-                                                <td colspan="2" class="in">TOTAL</td>
-                                                <td class="in">0</td>
-                                                <td colspan="2" class="in">0 W</td>
-                                                <td colspan="4" class="in"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p id="exterior-ilu">* Exemplo: 11h/dia x 365dias/ano = 4015 horas</p>
-                                    <p id="interior-ilu">* Exemplo: 8h/dia x 5dias/semana x 52semanas/ano = 2080 horas</p>
-                                    
-                                </div>
-                                <div id="medidas" data-id="3" class="tabelas step"><span>Medidas</span>
-                                    <!--interior-->
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr style="font-weight:bold;" class="titulo_row">
-                                                <th rowspan="2" class="tituloTH">Espaço</th>
-                                                <th rowspan="2" class="tituloTH">Designação</th>
-                                                <th colspan="4" class="tituloTH col-medida">Medidas</th>
-                                            </tr>
-                                            <tr class="titulo_row">
-                                                <th class="tituloTH">Fonte de luz</th>
-                                                <th class="tituloTH reg-exterior">Reguladores de fluxo</th>
-                                                <th class="tituloTH interior">Sensores de presença / movimento / luminosidade</th>
-                                                <th class="tituloTH">Sistemas de gestão</th>
-                                            </tr>
-                                            <tr id="espaco-medidas" name="espaco-medidas" hidden="hidden" class="textTR">
-                                                <td class="in">1</td>
-                                                <td class="in"></td>
-                                                <td class="select-cell">
-                                                    <select id="fonte-luz-medidas" name="fonte-luz-medidas" class="sel">
-                                                        <option value="">Seleccionar opção</option>
-                                                    </select>
-                                                </td>
-                                                <td class="select-cell reg-exterior">
-                                                    <select id="reguladores-fluxo-medidas" name="reguladores-fluxo-medidas" class="sel">
-                                                        <option value="">Seleccionar opção</option>
-                                                    </select>
-                                                </td>
-                                                <td class="select-cell interior">
-                                                    <select id="sensores-medidas" name="sensores-medidas" class="sel">
-                                                        <option value="">Seleccionar opção</option>
-                                                    </select>
-                                                </td>
-                                                <td class="select-cell">
-                                                    <select id="sistemas-gestao-medidas" name="sitemas-gestao-medidas" class="sel">
-                                                        <option value="">Seleccionar opção</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr id="total-medidas-row" class="textTR">                      
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p>Retrofit – Substituição das lâmpadas e acessórios.<br>Conversão para LED – Substituição das lâmpadas, acessórios e luminárias</p>
-                                </div>
-                                
-                                <div id="resumo" data-id="4" class="step"><span>Resumo</span>
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr style="font-weight:bold;" class="titulo_row">
-                                                <th class="tituloTH">&nbsp</th>
-                                                <th class="tituloTH">Cenário inicial</th>
-                                                <th class="tituloTH">Cenário final</th>
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td class="in">Potência</td>
-                                                <td id="potencia-1-resumo" class="center">0 W</td>
-                                                <td id="potencia-2-resumo" class="center">0 W</td>
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td class="in">Consumo anual de energia</td>
-                                                <td id="consumo-anual-1-resumo" class="center">0 kWh</td>
-                                                <td id="consumo-anual-2-resumo" class="center">0 kWh</td>
-                                            </tr>
-                                            <tr id="custps-energeticos-resumo" class="textTR">
-                                                <td class="in">Custos Energéticos Anuais</td>
-                                                <td id="custos-energeticos-1-resumo" class="center">valor</td>
-                                                <td id="custos-energeticos-2-resumo" class="center">valor</td>
-                                            </tr>
-                                             <tr class="textTR">
-                                                <td rowspan="2" class="in">Redução Anual de Consumos</td>
-                                                <td id="reducao-consumos-1-resumo" colspan="2" class="center">valor</td>                        
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td id="reducao-consumos-2-resumo" colspan="2" class="center">valor</td>
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td rowspan="2" class="in">Redução Anual de Custos</td>
-                                                <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>                        
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td id="reducao-custos-2-resumo" colspan="2" class="center">valor</td>
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td class="in">Investimento </td>
-                                                <td id="investimento-resumo" colspan="2" class="center">- €</td>
-                                            </tr>
-                                            <tr class="textTR">
-                                                <td class="in">Período de Retorno do Investimento</td>
-                                                <td id="payback-resumo" colspan="2" class="center">valor</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <!-- step-->
+                                    <div id="fonte-luz" data-id="2" class="tabelas step">
+                                        <span>Fonte de luz</span>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr class="titulo_row">
+                                                    <th rowspan="2" class="tituloTH">Espaço</th>
+                                                    <th rowspan="2" class="tituloTH">Designação</th>
+                                                    <th colspan="8" class="tituloTH">Fontes de Luz</th>
+                                                </tr>
+                                                <tr class="titulo_row">
+                                                    <th class="tituloTH">Nº de Lâmpadas</th>
+                                                    <th class="tituloTH">Tipo</th>
+                                                    <th class="tituloTH">Potência (W)</th>
+                                                    <th class="tituloTH">Horas Anuais de funcionamento *</th>
+                                                    <th class="tituloTH">Rendimento (lm/W)</th>
+                                                </tr>
+                                                <tr id="espaco-fonte-luz" name="espaco-fonte-luz" hidden="hidden" class="classTR">
+                                                    <td class="in">1</td>
+                                                    <td class="in"></td>
+                                                    <td class="in">
+                                                        <input type="number" name="quantidade-fonte-luz" class="form-control xInput" min="0" />
+                                                    </td>
+                                                    <td class="select-cell-2">
+                                                        <select id="tipo-fonte-luz" name="tipo-fonte-luz">
+                                                            <option value="">Seleccionar opção</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="select-cell-2 outro-sel">
+                                                        <select id="potencia-fonte-luz" name="potencia-fonte-luz" class="potencia-fonte-luz">
+                                                            <option value="">Seleccionar opção</option>
+                                                        </select>
+                                                    </td>
+                                                    <td id="potencia-fonte-luz-input" hidden="hidden" class="in outro-input potencia-fonte-luz">
+                                                        <input type="number" name="potencia-fonte-luz" placeholder="0" class="form-control xInput" min="0" />
+                                                    </td>
+                                                    <td class="in">
+                                                        <input id="horasFuncionamento" type="number" placeholder="0" class="form-control xInput" min="0" max="8760" />
+                                                    </td>
+                                                    <td id="rendimento-td" class="in">
+                                                        <input id="rendimento-input" type="number" placeholder="0" class="form-control xInput" min="0" />
+                                                    </td>
+                                                </tr>
+                                                <tr id="total-fonte-luz-row" class="textTR">
+                                                    <td colspan="2" class="in">TOTAL</td>
+                                                    <td class="in">0</td>
+                                                    <td colspan="2" class="in">0 W</td>
+                                                    <td colspan="4" class="in"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p id="exterior-ilu">* Exemplo: 11h/dia x 365dias/ano = 4015 horas</p>
+                                        <p id="interior-ilu">* Exemplo: 8h/dia x 5dias/semana x 52semanas/ano = 2080 horas</p>
+                
+                                    </div>
+                                    <div id="medidas" data-id="3" class="tabelas step">
+                                        <span>Medidas</span>
+                                        <!--interior-->
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr style="font-weight:bold;" class="titulo_row">
+                                                    <th rowspan="2" class="tituloTH">Espaço</th>
+                                                    <th rowspan="2" class="tituloTH">Designação</th>
+                                                    <th colspan="4" class="tituloTH col-medida">Medidas</th>
+                                                </tr>
+                                                <tr class="titulo_row">
+                                                    <th class="tituloTH">Fonte de luz</th>
+                                                    <th class="tituloTH reg-exterior">Reguladores de fluxo</th>
+                                                    <th class="tituloTH interior">Sensores de presença / movimento / luminosidade</th>
+                                                    <th class="tituloTH">Sistemas de gestão</th>
+                                                </tr>
+                                                <tr id="espaco-medidas" name="espaco-medidas" hidden="hidden" class="textTR">
+                                                    <td class="in">1</td>
+                                                    <td class="in"></td>
+                                                    <td class="select-cell">
+                                                        <select id="fonte-luz-medidas" name="fonte-luz-medidas" class="sel">
+                                                            <option value="">Seleccionar opção</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="select-cell reg-exterior">
+                                                        <select id="reguladores-fluxo-medidas" name="reguladores-fluxo-medidas" class="sel">
+                                                            <option value="">Seleccionar opção</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="select-cell interior">
+                                                        <select id="sensores-medidas" name="sensores-medidas" class="sel">
+                                                            <option value="">Seleccionar opção</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="select-cell">
+                                                        <select id="sistemas-gestao-medidas" name="sitemas-gestao-medidas" class="sel">
+                                                            <option value="">Seleccionar opção</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr id="total-medidas-row" class="textTR">
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>Retrofit – Substituição das lâmpadas e acessórios.
+                                            <br>Conversão para LED – Substituição das lâmpadas, acessórios e luminárias</p>
+                                    </div>
+                
+                                    <div id="resumo" data-id="4" class="step">
+                                        <span>Resumo</span>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr style="font-weight:bold;" class="titulo_row">
+                                                    <th class="tituloTH">&nbsp</th>
+                                                    <th class="tituloTH">Cenário inicial</th>
+                                                    <th class="tituloTH">Cenário final</th>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td class="in">Potência</td>
+                                                    <td id="potencia-1-resumo" class="center">0 W</td>
+                                                    <td id="potencia-2-resumo" class="center">0 W</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td class="in">Consumo anual de energia</td>
+                                                    <td id="consumo-anual-1-resumo" class="center">0 kWh</td>
+                                                    <td id="consumo-anual-2-resumo" class="center">0 kWh</td>
+                                                </tr>
+                                                <tr id="custps-energeticos-resumo" class="textTR">
+                                                    <td class="in">Custos Energéticos Anuais</td>
+                                                    <td id="custos-energeticos-1-resumo" class="center">valor</td>
+                                                    <td id="custos-energeticos-2-resumo" class="center">valor</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td rowspan="2" class="in">Redução Anual de Consumos</td>
+                                                    <td id="reducao-consumos-1-resumo" colspan="2" class="center">valor</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td id="reducao-consumos-2-resumo" colspan="2" class="center">valor</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td rowspan="2" class="in">Redução Anual de Custos</td>
+                                                    <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td id="reducao-custos-2-resumo" colspan="2" class="center">valor</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td class="in">Investimento </td>
+                                                    <td id="investimento-resumo" colspan="2" class="center">- €</td>
+                                                </tr>
+                                                <tr class="textTR">
+                                                    <td class="in">Período de Retorno do Investimento</td>
+                                                    <td id="payback-resumo" colspan="2" class="center">valor</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <!-- BOTOES -->
-                    <div class="but-2">
-                        <!--.but-view (hidden)-->
-                        <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
-                        <button id="fonte-luz-but" type="button" class="but fonte-luz-but">Próximo</button>
-                    </div>
-                    <div class="recolhe-medidas-but step-but">
-                        <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
-                        <button id="medidas-but" type="button" class="but medidas-but">Próximo</button>
-                    </div>
-                    <div class="end-step step-but">
-                        <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
-                        <button id="resumo-but" type="button" class="but resumo-but">Analisar</button>
-                        <button id="reload-but" type="button" class="but reload-but" style="display:none;">Voltar ao início</button>
-                    </div>
-                    <div class="print_pdf step-but">
-                        <span class="print_text">Deseja imprimir?
-                            <button type="button" onclick="printJS('resumo', 'html')" class="print_link">Clique aqui</button>
-                        </span>
+                <div class="row">
+                    <div class="col-md-5">
+                        <!-- BOTOES -->
+                        <div class="but-2">
+                            <!--.but-view (hidden)-->
+                            <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
+                            <button id="fonte-luz-but" type="button" class="but fonte-luz-but">Próximo</button>
+                        </div>
+                        <div class="recolhe-medidas-but step-but">
+                            <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
+                            <button id="medidas-but" type="button" class="but medidas-but">Próximo</button>
+                        </div>
+                        <div class="end-step step-but">
+                            <button type="button" onclick="prevStep()" class="but anterior">Anterior</button>
+                            <button id="resumo-but" type="button" class="but resumo-but">Analisar</button>
+                            <button id="reload-but" type="button" class="but reload-but" style="display:none;">Voltar ao início</button>
+                        </div>
+                        <div class="print_pdf step-but">
+                            <span class="print_text">Deseja imprimir?
+                                <button type="button" onclick="printJS('resumo', 'html')" class="print_link">Clique aqui</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </main>
-
     </body>
 </html>
