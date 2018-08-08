@@ -1,36 +1,35 @@
 // TABELAS CALCULOS //
-function totalQtFonteLuz(elementos) {
+function totalQtFonteLuz() {
     var total = 0;
     var quantidade = 0;
-    for (var i = 1; i < elementos.length; i++) {
-      quantidade = new Number($(elementos[i]).val());
+    for (var i = 1; i <= espacoCount; i++) {
+      quantidade = new Number($("#quantidade-fonte-luz" + i).val());
       total += quantidade;
     }
-    return total;
+    $("#total-fonte-luz-row").find("td").eq(1).html(total);
 }
 
-function totalPotenciaFonteLuz(elementos) {
+function totalPotenciaFonteLuz() {
   var potenciaQuantidade = 0;
   var potenciaIndex = 0;
   var tipoLuzIndex = 0;
   var quantidade = 0;
   var total = 0;
   var potencia = 0;
-  for (var i = 1; i < elementos.length; i++) {
+  for (var i = 1; i <= espacoCount; i++) {
 
-    //duvidas é só dizer ;) Filipe Calha
     //added increment i value because when you get this values, they exist two times, so in the specific 
     //case of OUTROS he read the same data two times and because of that it add it to total
-    quantidade = $(elementos[i]).parent("td").parent("tr").find("td").eq(2).find("input").val();
-    tipoLuzIndex = $(elementos[i]).parent("td").parent("tr").find("td").eq(3).find("select").val();
+    quantidade = $("#quantidade-fonte-luz" + i).val();
+    tipoLuzIndex = $("#tipo-fonte-luz" + i).val();
     if (tipoLuzIndex == OUTROS){
-      potencia = $(elementos[i]).parent("td").parent("tr").find("td").eq(5).find("input").val();
+      potencia = $("#potencia-fonte-luz-input" + i).val();
       potenciaQuantidade = new Number(quantidade) * new Number(potencia);
 
       i++;
     }
     else {
-      potenciaIndex = $(elementos[i]).val();
+      potenciaIndex = $("#potencia-fonte-luz" + i).val();
       if (potenciaIndex == "")
         potenciaQuantidade = 0;
       else
@@ -39,17 +38,18 @@ function totalPotenciaFonteLuz(elementos) {
     
     total += potenciaQuantidade;
   }
-  return total;
+  
+  $("#total-fonte-luz-row").find("td").eq(2).html(total + "W");
 }
 
-function totalArea(elementos) {
+function totalArea() {
   var total = 0;
   var area = 0;
-  for (var i = 1; i < elementos.length; i++) {
-    area = new Number($(elementos[i]).val());
+  for (var i = 1; i <= espacoCount; i++) {
+    area = new Number($("#area"+i).val());
     total += area;
   }
-  return total;
+  $("#total-area").html(total + " m2");
 }
 
 function calculaAP_BP(potenciaFL, rendimentoFL, rendimentoLED) {

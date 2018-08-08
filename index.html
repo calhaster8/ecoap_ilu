@@ -4,28 +4,23 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <!--Place favicon.ico in the root directory-->
-        <link rel="apple-touch-icon" href="icon.png"/>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"  crossorigin="anonymous"/>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400|Open+Sans:300,400|Roboto:100,300,400" rel="stylesheet"/>    
-        <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"/>
-        <link rel="shortcut icon" href="img/logo-head-small.png" type="image/png"/>
+        <link rel="shortcut icon" href="include/img/logo-head-small.png" type="image/png"/>
         <!--BOOTSTRAP CDN-->
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="include/css/bootstrap.min.css"/>
         <!--CUSTOM CSS-->
-        <link rel="stylesheet" href="css/normalize.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="include/css/style.css"/>
+        <link rel="stylesheet" href="include/css/print.min.css"/>
         <!--BOOTSTRAP + JQUERY CDN-->
-        <script src="js/jquery.min.js" ></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="include/js/jquery.min.js" ></script>
+        <script src="include/js/bootstrap.min.js"></script>
         <!--CUSTOM JS-->
-        <script src="js/plugins.js"></script>
-        <script src="js/info.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/calculos.js"></script>
-        <script src="js/cenarios.js"></script>    
-        <script src="js/print.min.js"></script>
-        <script src="js/jquery.validate.min.js"></script>
+        <script src="include/js/plugins.js"></script>
+        <script src="include/js/info.js"></script>
+        <script src="include/js/main.js"></script>
+        <script src="include/js/calculos.js"></script>
+        <script src="include/js/cenarios.js"></script>    
+        <script src="include/js/print.min.js"></script>
+        <script src="include/js/jquery.validate.min.js"></script>
         <title>Calculadora - Iluminação</title>
     </head>
     <body>
@@ -55,7 +50,7 @@
                                         <div class="custo-iluminacao-box">
                                             <label id="custo-unit-iluminacao-titulo" for="custo-unit-ilumonacao" hidden="hidden">Custo unitário (€/kWh)</label>
                                             <label id="custo-unit-iluminacao-titulo-label" style="font-size:14px;" hidden="hidden">(Usar "." (ponto) como separador das casas decimais)</label>
-                                            <input id="custo-unit-iluminacao" name="custo-unit-iluminacao" type="number" value="" step="0.01" hidden="hidden" class="custo-ilum"
+                                            <input id="custo-unit-iluminacao" name="custo-unit-iluminacao" type="number" value="" step="0.0001" hidden="hidden" class="custo-ilum"
                                                 min="0" />
                                         </div>
                                     </div>
@@ -63,7 +58,7 @@
                                     <!-- step-->
                                     <div id="iluminacao" hidden="hidden" data-id="1" class="tabelas step">
                                         <span>Iluminação</span>
-                                        <div id="espacos-iluminacao" name="espacos-iluminacao"></div>
+                                        <div id="espacos-iluminacao"></div>
                                     </div>
                                     <!-- step-->
                                     <div id="fonte-luz" data-id="2" class="tabelas step">
@@ -82,15 +77,15 @@
                                                     <th class="tituloTH">Horas Anuais de funcionamento *</th>
                                                     <th class="tituloTH">Rendimento (lm/W)</th>
                                                 </tr>
-                                                <tr id="espaco-fonte-luz" name="espaco-fonte-luz" hidden="hidden" class="classTR">
+                                                <tr id="espaco-fonte-luz" hidden="hidden" class="classTR">
                                                     <td class="in">1</td>
                                                     <td class="in"></td>
                                                     <td class="in">
-                                                        <input type="number" name="quantidade-fonte-luz" class="form-control xInput" min="0" />
+                                                        <input type="number" name="quantidade-fonte-luz" class="form-control xInput" min="0" step="1" />
                                                     </td>
                                                     <td class="select-cell-2">
                                                         <select id="tipo-fonte-luz" name="tipo-fonte-luz">
-                                                            <option value="">Seleccionar opção</option>
+                                                            <option name="tipo-fonte-luz-op" value="">Seleccionar opção</option>
                                                         </select>
                                                     </td>
                                                     <td class="select-cell-2 outro-sel">
@@ -105,7 +100,7 @@
                                                         <input id="horasFuncionamento" type="number" placeholder="0" class="form-control xInput" min="0" max="8760" />
                                                     </td>
                                                     <td id="rendimento-td" class="in">
-                                                        <input id="rendimento-input" type="number" placeholder="0" class="form-control xInput" min="0" />
+                                                        <input id="rendimento-input" type="number" disabled="disabled" placeholder="0" class="form-control xInput" min="0" />
                                                     </td>
                                                 </tr>
                                                 <tr id="total-fonte-luz-row" class="textTR">
@@ -136,7 +131,7 @@
                                                     <th class="tituloTH interior">Sensores de presença / movimento / luminosidade</th>
                                                     <th class="tituloTH">Sistemas de gestão</th>
                                                 </tr>
-                                                <tr id="espaco-medidas" name="espaco-medidas" hidden="hidden" class="textTR">
+                                                <tr id="espaco-medidas" hidden="hidden" class="textTR">
                                                     <td class="in">1</td>
                                                     <td class="in"></td>
                                                     <td class="select-cell">

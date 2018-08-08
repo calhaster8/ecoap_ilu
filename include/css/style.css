@@ -465,4 +465,6 @@ body {
 .print_link {
   border: none;
   color: #0099cc;
-  text-decoration: underline; }
+  text-decoration: underline;
+background-color: transparent;
+}
