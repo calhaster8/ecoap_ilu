@@ -213,7 +213,7 @@ function buildFonteLuz() {
                 $(input).change(function () {
                     totalPotenciaFonteLuz();
                 });
-                potenciaId.hide();
+                $(".outro-sel").hide();
                 input.show();
                 inputRendimento.val("");
                 inputRendimento.removeAttr('disabled');
@@ -233,7 +233,7 @@ function buildFonteLuz() {
                 }
                 inputRendimento.val(tipoFonteLuz[$(event.target).val()].rendimento);
                 inputRendimento.attr('disabled', 'disabled');
-                potenciaId.show();
+                $(".outro-sel").show();
                 input.hide();
                 /*Limpa as opcoes da potencia*/
             } else {
@@ -318,7 +318,7 @@ function buildFonteLuz() {
             messages: {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
                 min: '<label style="font-size: 14px; color: red;">O valor introduzido tem que ser maior que 0.</label>',
-                max: '<label style="font-size: 14px; color: red;">O valor introduzido tem que ser inferior a 8760 horas.  Exemplo: 24h/dia x 7dias/semana x 52semanas/ano = 8760 horas</label>',
+                max: '<label style="font-size: 14px; color: red;">O valor máximo de horas de funcionamento anual é de 8760.  Exemplo: 24h/dia x 7dias/semana x 52semanas/ano = 8760 horas</label>',
                 step: '<label style="font-size: 14px; color: red;">O passo é de 1.</label>',
                 number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,). Ex: 10</label>'
             }
@@ -393,13 +393,6 @@ function buildMedidas() {
         newEspaco.insertBefore('#total-medidas-row');
         newEspaco.show();
 
-
-        $("#fonte-luz-medidas" + i).rules("add", {
-            required: true,
-            messages: {
-                required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>'
-            }
-        });
 
         $("#reguladores-fluxo-medidas" + i).rules("add", {
             required: true,
@@ -688,6 +681,7 @@ function nextStep() {
         $('.but-2').hide();
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
+        $('.print_pdf').hide();
     }
 
     if (nextId == 4) {
@@ -727,6 +721,7 @@ function prevStep() {
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
         $('#reload-but').hide();
+        $('.print_pdf').hide()
         $('.resumo-but').show();
     }
 }
@@ -777,11 +772,16 @@ $(document).ready(function () {
     });
 
     $(".fonte-luz-but").click(function () {
-        if ($("#ilu-form").valid()) {
-            recolheDados();
-            nextStep();
-            buildFonteLuz();
-        }
+        
+        if(espacoCount<=0){
+            alert("Não é possível avançar sem espaços definidos.");
+        }else{        
+            if ($("#ilu-form").valid() && espacoCount>0) {
+                recolheDados();
+                nextStep();
+                buildFonteLuz();
+            }
+        }   
     });
 
     $(".medidas-but").click(function () {

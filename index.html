@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="custo-iluminacao-box">
                                             <label id="custo-unit-iluminacao-titulo" for="custo-unit-ilumonacao" hidden="hidden">Custo unitário (€/kWh)</label>
-                                            <label id="custo-unit-iluminacao-titulo-label" style="font-size:14px;" hidden="hidden">(Usar "." (ponto) como separador das casas decimais)</label>
+                                 
                                             <input id="custo-unit-iluminacao" name="custo-unit-iluminacao" type="number" value="" step="0.0001" hidden="hidden" class="custo-ilum"
                                                 min="0" />
                                         </div>
@@ -73,7 +73,7 @@
                                                 <tr class="titulo_row">
                                                     <th class="tituloTH">Nº de Lâmpadas</th>
                                                     <th class="tituloTH">Tipo</th>
-                                                    <th class="tituloTH">Potência (W)</th>
+                                                    <th class="tituloTH">Potência unitária(W)</th>
                                                     <th class="tituloTH">Horas Anuais de funcionamento *</th>
                                                     <th class="tituloTH">Rendimento (lm/W)</th>
                                                 </tr>
@@ -116,7 +116,7 @@
                 
                                     </div>
                                     <div id="medidas" data-id="3" class="tabelas step">
-                                        <span>Medidas</span>
+                                        <span>Medidas de Melhoria da Eficiência Energética</span>
                                         <!--interior-->
                                         <table class="table table-bordered">
                                             <tbody>
@@ -129,7 +129,7 @@
                                                     <th class="tituloTH">Fonte de luz</th>
                                                     <th class="tituloTH reg-exterior">Reguladores de fluxo</th>
                                                     <th class="tituloTH interior">Sensores de presença / movimento / luminosidade</th>
-                                                    <th class="tituloTH">Sistemas de gestão</th>
+                                                    <th class="tituloTH">Sistemas de gestão / monitorização</th>
                                                 </tr>
                                                 <tr id="espaco-medidas" hidden="hidden" class="textTR">
                                                     <td class="in">1</td>
@@ -159,8 +159,8 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <p>Retrofit – Substituição das lâmpadas e acessórios.
-                                            <br>Conversão para LED – Substituição das lâmpadas, acessórios e luminárias</p>
+                                        <p>Retrofit LED – corresponde à substituição das lâmpadas e acessórios, mantendo as luminárias existentes.
+                                        <br>Conversão para LED – corresponde à substituição das lâmpadas, dos acessórios e também das luminárias.</p>
                                     </div>
                 
                                     <div id="resumo" data-id="4" class="step">
@@ -173,7 +173,7 @@
                                                     <th class="tituloTH">Cenário final</th>
                                                 </tr>
                                                 <tr class="textTR">
-                                                    <td class="in">Potência</td>
+                                                    <td class="in">Potência total</td>
                                                     <td id="potencia-1-resumo" class="center">0 W</td>
                                                     <td id="potencia-2-resumo" class="center">0 W</td>
                                                 </tr>
@@ -183,19 +183,19 @@
                                                     <td id="consumo-anual-2-resumo" class="center">0 kWh</td>
                                                 </tr>
                                                 <tr id="custps-energeticos-resumo" class="textTR">
-                                                    <td class="in">Custos Energéticos Anuais</td>
+                                                    <td class="in">Custos energéticos anuais</td>
                                                     <td id="custos-energeticos-1-resumo" class="center">valor</td>
                                                     <td id="custos-energeticos-2-resumo" class="center">valor</td>
                                                 </tr>
                                                 <tr class="textTR">
-                                                    <td rowspan="2" class="in">Redução Anual de Consumos</td>
+                                                    <td rowspan="2" class="in">Redução anual de consumos</td>
                                                     <td id="reducao-consumos-1-resumo" colspan="2" class="center">valor</td>
                                                 </tr>
                                                 <tr class="textTR">
                                                     <td id="reducao-consumos-2-resumo" colspan="2" class="center">valor</td>
                                                 </tr>
                                                 <tr class="textTR">
-                                                    <td rowspan="2" class="in">Redução Anual de Custos</td>
+                                                    <td rowspan="2" class="in">Redução anual de custos energéticos</td>
                                                     <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>
                                                 </tr>
                                                 <tr class="textTR">
@@ -206,7 +206,7 @@
                                                     <td id="investimento-resumo" colspan="2" class="center">- €</td>
                                                 </tr>
                                                 <tr class="textTR">
-                                                    <td class="in">Período de Retorno do Investimento</td>
+                                                    <td class="in">Período de Retorno</td>
                                                     <td id="payback-resumo" colspan="2" class="center">valor</td>
                                                 </tr>
                                             </tbody>
