@@ -773,7 +773,9 @@ $(document).ready(function () {
 
     $(".fonte-luz-but").click(function () {
         
-        if(espacoCount<=0){
+        if($("#tipo-iluminacao").val()=="" || $("#tipo-iluminacao").val() == undefined){
+            alert("Não é possível avançar sem selecccionar um tipo de iluminação.");
+        }else if(espacoCount<=0){
             alert("Não é possível avançar sem espaços definidos.");
         }else{        
             if ($("#ilu-form").valid() && espacoCount>0) {
