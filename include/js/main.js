@@ -213,7 +213,7 @@ function buildFonteLuz() {
                 $(input).change(function () {
                     totalPotenciaFonteLuz();
                 });
-                $(".outro-sel").hide();
+                $(event.target).parent("td").parent("tr").find(".outro-sel").hide();
                 input.show();
                 inputRendimento.val("");
                 inputRendimento.removeAttr('disabled');
@@ -233,7 +233,7 @@ function buildFonteLuz() {
                 }
                 inputRendimento.val(tipoFonteLuz[$(event.target).val()].rendimento);
                 inputRendimento.attr('disabled', 'disabled');
-                $(".outro-sel").show();
+                $(event.target).parent("td").parent("tr").find(".outro-sel").show();
                 input.hide();
                 /*Limpa as opcoes da potencia*/
             } else {
