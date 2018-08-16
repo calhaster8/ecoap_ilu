@@ -1,6 +1,5 @@
-/*FUNCTIONS*/
 function buildTipoIluminacao() {
-    //Cria opções no select
+    
     for (var i = 0; i < tipoInstalacao.length; i++) {
         $("#tipo-iluminacao").append($('<option class="op"> </option>').val(i).html(tipoInstalacao[i].nome));
     }
@@ -12,7 +11,6 @@ function buildTipoIluminacao() {
             $("#custo-unit-iluminacao-titulo-label").show();
             $("#custo-unit-iluminacao").val(tipoInstalacao[$("#tipo-iluminacao").val()].custo_unit);
             $("#iluminacao").show();
-
 
             if (tipoInstalacao[$("#tipo-iluminacao").val()].nome == INTERIOR) {
                 estado = INTERIOR;
@@ -33,89 +31,71 @@ function buildTipoIluminacao() {
     });
 }
 
-//BUILD TABLE
 function buildDadosTable() {
     espacoCount = 0;
     espacoCount++;
     if (tipoInstalacao[$("#tipo-iluminacao").val()].nome == EXTERIOR) {
-        // TABELA EXTERIOR (DESIGNACAO)
+
         estado = EXTERIOR
 
         var dadosTable = '<table class="table table-bordered" id="dataTable"><tbody><tr style="font-weight:bold;" class="titulo_row"><th class="tituloTH">Espaço</th><th class="tituloTH">Designação</th><th class="tituloTH">&nbsp</th></tr>';
 
-        // CLONE //
         dadosTable += '<tr class="textTR" name="espaco" id="clone1" hidden>';
         dadosTable += '<td class="in"></td>';
         dadosTable += '<td class="in"><input class="form-control xInput" type="text" placeholder="Designação" id="designacao" name="designacao"></input></td>';
         dadosTable += '<td class="in"><button class="but-dados" type="button" id="remove-espaco" name="remove-espaco" onclick="removeEspaco(this)">Remover</button></td>';
-        //dadosTable += '<td class="in"><a href="">Remover</a></td>';
         dadosTable += '</tr>';
-        // CLONE //
-
 
         dadosTable += '<tr class="textTR" name="espaco">';
         dadosTable += '<td class="in">' + espacoCount + '</td>';
         dadosTable += '<td class="in"><input class="form-control xInput" type="text" placeholder="Designação" id="designacao' + espacoCount + '" name="designacao' + espacoCount + '"></input></td>';
         dadosTable += '<td class="in"><button class="but-dados" type="button" id="remove-espaco" name="remove-espaco" onclick="removeEspaco(this)">Remover</button></td>';
-        //dadosTable += '<td class="in"><a href="">Remover</a></td>';
         dadosTable += '</tr>';
-
         dadosTable += '<tr class="textTR" name="espaco" id="adiciona-row"><td class="in"></td><td class="in"></td><td class="in"><button class="but-dados" type="button" id="adiciona-espaco" name="adiciona-espaco" onclick="adicionaEspaco()">Adicionar</button></td></tr>';
 
     } else if (tipoInstalacao[$("#tipo-iluminacao").val()].nome == INTERIOR) {
-        // TABELA INTERIOR (TIPOLOGIA, DESIGNACAO, AREA)
+
         estado = INTERIOR;
 
         var dadosTable = '<table class="table table-bordered" id="dataTable"><tbody><tr style="font-weight:bold;" class="titulo_row"><th class="tituloTH">Espaço</th><th class="tituloTH">Tipologia do espaço</th><th class="tituloTH">Designação</th><th class="tituloTH">Área (m2)</th><th class="tituloTH">&nbsp</th></tr>';
 
-        // PARA CLONE //
         dadosTable += '<tr class="textTR" name="espaco" id="clone1" hidden>';
         dadosTable += '<td class="in"></td>';
         dadosTable += '<td class="select-cell"><select name="tipologia" class="interior" id="tipologia">';
-        dadosTable += '<option class="op" value="">Seleccionar opção</option>';
-
-        //CRIAS OPTIONS COM VALORES E NOME TIPOLOGIA 
+        dadosTable += '<option class="op" value="">Selecionar opção</option>';
+      
         for (var j = 0; j < tipoTipologia.length; j++) {
-            //$('#tipologia_test').append('<option></option>').val(j).html(tipoTipologia[j].nome);
             dadosTable += '<option class="op" value="' + j + '">' + tipoTipologia[j].nome + '</option>';
         }
 
         dadosTable += '</select></td>';
         dadosTable += '<td class="in"><input class="form-control xInput" type="text" placeholder="Designação" id="designacao" name="designacao"></input></td>';
-        dadosTable += '<td class="in"><input class="form-control xInput" type="number" min="1" step="0.1" placeholder="Área" class="interior" id="area" name="area"></input></td>';
+        dadosTable += '<td class="in"><input class="form-control xInput" type="number" min="1" step="0.1" placeholder="0 m2" class="interior" id="area" name="area"></input></td>';
         dadosTable += '<td class="in"><button class="but-dados" type="button" id="remove-espaco" name="remove-espaco" onclick="removeEspaco(this)">Remover</button></td>';
-        //dadosTable += '<td class="in"><a href="">Remover</a></td>';
         dadosTable += '</tr>';
-        // PARA CLONE //
-
 
         dadosTable += '<tr class="textTR" name="espaco">';
         dadosTable += '<td class="in">' + espacoCount + '</td>';
         dadosTable += '<td class="select-cell"><select name="tipologia' + espacoCount + '" class="interior" id="tipologia' + espacoCount + '">';
-        dadosTable += '<option class="op" value="">Seleccionar opção</option>';
+        dadosTable += '<option class="op" value="">Selecionar opção</option>';
 
-        //CRIAS OPTIONS COM VALORES E NOME TIPOLOGIA 
         for (var j = 0; j < tipoTipologia.length; j++) {
-            //$('#tipologia_test').append('<option></option>').val(j).html(tipoTipologia[j].nome);
             dadosTable += '<option class="op" value="' + j + '">' + tipoTipologia[j].nome + '</option>';
         }
 
         dadosTable += '</select></td>';
         dadosTable += '<td class="in"><input class="form-control xInput" type="text" placeholder="Designação" id="designacao' + espacoCount + '" name="designacao' + espacoCount + '"></input></td>';
-        dadosTable += '<td class="in"><input class="form-control xInput" type="number" min="1" step="0.1" placeholder="Área" class="interior" id="area' + espacoCount + '" name="area' + espacoCount + '"></input></td>';
+        dadosTable += '<td class="in"><input class="form-control xInput" type="number" min="1" step="0.1" placeholder="0 m2" class="interior" id="area' + espacoCount + '" name="area' + espacoCount + '"></input></td>';
         dadosTable += '<td class="in"><button class="but-dados" type="button" id="remove-espaco" name="remove-espaco" onclick="removeEspaco(this)">Remover</button></td>';
-        //dadosTable += '<td class="in"><a href="">Remover</a></td>';
         dadosTable += '</tr>';
 
         dadosTable += '<tr class="textTR" name="espaco" id="adiciona-row"><td class="in"></td><td class="in"></td><td class="in"></td><td class="in"></td><td class="in"><button class="but-dados" type="button" id="adiciona-espaco" name="adiciona-espaco" onclick="adicionaEspaco()">Adicionar</button></td></tr>';
 
-        //total
         dadosTable += '<tr>';
         dadosTable += '<td colspan="3">TOTAL</td>';
-        dadosTable += '<td id="total-area">0m2</td>';
+        dadosTable += '<td id="total-area">0 m2</td>';
         dadosTable += '<td>&nbsp</td>';
         dadosTable += '</tr>';
-
     }
 
     $('#espacos-iluminacao').html(dadosTable + '</tbody></table>');
@@ -139,12 +119,11 @@ function buildDadosTable() {
         step: 0.1,
         messages: {
             required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
-            min: '<label style="font-size: 14px; color: red;">O área tem que ser maior que 0.</label>',
-            step: '<label style="font-size: 14px; color: red;">O passo é de 0.1.</label>',
-            number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,). Ex: 10.0</label>'
+            min: '<label style="font-size: 14px; color: red;">A área tem que ser maior que 0</label>',
+            step: '<label style="font-size: 14px; color: red;">O passo de incremento é de 0.1</label>',
+            number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,)</label>'
         }
     });
-
 
     $("#area" + espacoCount).change(function () {
         totalArea();
@@ -152,7 +131,6 @@ function buildDadosTable() {
 }
 
 function buildFonteLuz() {
-    /*Remove os elementos que já lá estavam criados, para o caso do utilizador ter voltado atras*/
 
     for (i = 1; i <= espacoCount; i++) {
         $("#espaco-fonte-luz" + i).remove();
@@ -164,12 +142,10 @@ function buildFonteLuz() {
                 .find('option')
                 .remove()
                 .end()
-                .append('<option name="tipo-fonte-luz-op" class="op" value="">Selectione uma opção</option>')
+                .append('<option name="tipo-fonte-luz-op" class="op" value="">Selecionar opção</option>')
                 .val('');
-
     }
 
-    /*Constroi select do tipo de fonte de luz*/
     for (var i = 0; i < tipoFonteLuz.length; i++) {
         for (var j = 0; j < tipoFonteLuz[i].aplicacaoPotencia.length; j++) {
             if (tipoFonteLuz[i].aplicacaoPotencia[j].match(estado)) {
@@ -184,7 +160,6 @@ function buildFonteLuz() {
     var newEspaco;
     for (var i = 1; i <= espacoCount; i++) {
         espaco[i].id = i;
-        /*Incrementa os id's*/
         newEspaco = original.clone();
         newEspaco.attr('id', "espaco-fonte-luz" + i);
         newEspaco.find("td").eq(0).html(i);
@@ -199,7 +174,8 @@ function buildFonteLuz() {
         newEspaco.find("td").eq(5).find("input").attr("name", "potencia-fonte-luz-input" + i);
         newEspaco.find("td").eq(6).find("input").attr("id", "horas-funcionamento-fonte-luz" + i);
         newEspaco.find("td").eq(6).find("input").attr("name", "horas-funcionamento-fonte-luz" + i);
-
+		newEspaco.find("td").eq(7).find("input").attr("id", "rendimento-fonte-luz" + i);
+        newEspaco.find("td").eq(7).find("input").attr("name", "rendimento-fonte-luz" + i);
 
         newEspaco.insertBefore('#total-fonte-luz-row');
 
@@ -209,7 +185,6 @@ function buildFonteLuz() {
             var inputRendimento = $(event.target).parent("td").parent("tr").find("td").eq(7).find('input');
 
             if ($(event.target).val() == OUTROS) {
-                //added to in inline sleect outra add onchange event to input
                 $(input).change(function () {
                     totalPotenciaFonteLuz();
                 });
@@ -220,12 +195,10 @@ function buildFonteLuz() {
 
             } else if ($(event.target).val() != "" && $(event.target).val() != OUTROS) {
                 var tipoIndex = $(event.target).val();
-                /*Limpa as opcoes da potencia*/
                 if ($(potenciaId).length > 0) {
                     $(potenciaId).find('option').remove();
-                    $(potenciaId).append($('<option value="">Seleccionar opção</option>'));
+                    $(potenciaId).append($('<option value="">Selecionar opção</option>'));
                 }
-                /*Acrescenta os valores da potencia de acordo com o tipo (exterior ou interior)*/
                 for (var i = 0; i < tipoFonteLuz[tipoIndex].aplicacaoPotencia.length; i++) {
                     if (tipoFonteLuz[tipoIndex].aplicacaoPotencia[i].match(estado)) {
                         $(potenciaId).append($('<option class="op"> </option>').val(i).html(tipoFonteLuz[tipoIndex].potencia[i]));
@@ -235,10 +208,10 @@ function buildFonteLuz() {
                 inputRendimento.attr('disabled', 'disabled');
                 $(event.target).parent("td").parent("tr").find(".outro-sel").show();
                 input.hide();
-                /*Limpa as opcoes da potencia*/
+                
             } else {
                 $(potenciaId).find('option').remove();
-                $(potenciaId).append($('<option value="">Seleccionar opção</option>'));
+                $(potenciaId).append($('<option value="">Selecionar opção</option>'));
             }
         });
 
@@ -267,10 +240,10 @@ function buildFonteLuz() {
             digits: true,
             messages: {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
-                min: '<label style="font-size: 14px; color: red;">O valor introduzido tem que ser maior que 0.</label>',
-                step: '<label style="font-size: 14px; color: red;">O passo é de 1.</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza um número válido. Ex: 10</label>',
-                digits: '<label style="font-size: 14px; color: red;">Introduza um número válido. Ex: 10</label>'
+                min: '<label style="font-size: 14px; color: red;">O valor mínimo é 1</label>',
+                step: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>',
+                number: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>',
+                digits: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>'
             }
         });
 
@@ -303,9 +276,9 @@ function buildFonteLuz() {
             step: 1,
             messages: {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
-                min: '<label style="font-size: 14px; color: red;">O valor introduzido tem que ser maior que 0.</label>',
-                step: '<label style="font-size: 14px; color: red;">O passo é de 1.</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,). Ex: 10</label>'
+                min: '<label style="font-size: 14px; color: red;">O valor mínimo é 1</label>',
+                step: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>',
+                number: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>'
             }
         });
 
@@ -317,17 +290,30 @@ function buildFonteLuz() {
             max: 8760,
             messages: {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
-                min: '<label style="font-size: 14px; color: red;">O valor introduzido tem que ser maior que 0.</label>',
-                max: '<label style="font-size: 14px; color: red;">O valor máximo de horas de funcionamento anual é de 8760.  Exemplo: 24h/dia x 7dias/semana x 52semanas/ano = 8760 horas</label>',
-                step: '<label style="font-size: 14px; color: red;">O passo é de 1.</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,). Ex: 10</label>'
+                min: '<label style="font-size: 14px; color: red;">O valor mínimo é 1</label>',
+                max: '<label style="font-size: 14px; color: red;">O valor máximo de horas de funcionamento anual é de 8760</label>',
+                step: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>',
+                number: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>'
             }
         });
 
+		$("#rendimento-fonte-luz" + i).rules("add", {
+            required: true,
+            min: 1,
+            number: true,
+            step: 1,
+			max: 120,
+            messages: {
+                required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
+                min: '<label style="font-size: 14px; color: red;">O valor mínimo é 1</label>',
+				max: '<label style="font-size: 14px; color: red;">O rendimento máximo é de 120 lm/W</label>',
+                step: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>',
+                number: '<label style="font-size: 14px; color: red;">Introduza números inteiros</label>'
+            }
+        });
+		
         newEspaco.show();
-
     }
-
 }
 
 function buildMedidas() {
@@ -335,7 +321,6 @@ function buildMedidas() {
     $("#sensores-medidas").find("option:gt(0)").remove();
     $("#sistemas-gestao-medidas").find("option:gt(0)").remove();
     $("#fonte-luz-medidas").find("option:gt(0)").remove();
-    /*Remove os elementos que já lá estavam criados, para o caso do utilizador ter voltado atras*/
     for (i = 1; i <= espacoCount; i++) {
         $("#espaco-medidas" + i).remove();
     }
@@ -343,7 +328,6 @@ function buildMedidas() {
     var original = $("#espaco-medidas");
     var newEspaco;
     for (var i = 1; i <= espacoCount; i++) {
-        /*Incrementa os id's*/
         newEspaco = original.clone();
         newEspaco.attr('id', "espaco-medidas" + i);
         newEspaco.find("td").eq(0).html(i);
@@ -378,21 +362,18 @@ function buildMedidas() {
         newEspaco.find("td").eq(5).find("select").attr("id", "sistemas-gestao-medidas" + i);
         newEspaco.find("td").eq(5).find("select").attr("name", "sistemas-gestao-medidas" + i);
 
-        /*Constroi selects de sim/nao*/
         for (var j = 0; j < tipoMedidas.length; j++) {
             newEspaco.find("td").eq(3).find("#reguladores-fluxo-medidas" + i).append($('<option class="op"> </option>').val(j).html(tipoMedidas[j]));
             newEspaco.find("td").eq(4).find("#sensores-medidas" + i).append($('<option class="op"> </option>').val(j).html(tipoMedidas[j]));
             newEspaco.find("td").eq(5).find("#sistemas-gestao-medidas" + i).append($('<option class="op"> </option>').val(j).html(tipoMedidas[j]));
         }
 
-        //default a não
         newEspaco.find("td").eq(3).find("#reguladores-fluxo-medidas" + i).val(1);
         newEspaco.find("td").eq(4).find("#sensores-medidas" + i).val(1);
         newEspaco.find("td").eq(5).find("#sistemas-gestao-medidas" + i).val(1);
 
         newEspaco.insertBefore('#total-medidas-row');
         newEspaco.show();
-
 
         $("#reguladores-fluxo-medidas" + i).rules("add", {
             required: true,
@@ -415,10 +396,7 @@ function buildMedidas() {
             }
         });
     }
-
 }
-
-
 
 function showExterior() {
     $('.interior').hide();
@@ -429,21 +407,18 @@ function showInterior() {
 
 }
 
-/*Remove espaco (Recebe o id do elemento a remover)*/
 function removeEspaco(id) {
     $(id).closest('tr').remove();
     espacoCount--;
     totalArea();
 }
 
-/*Adiciona novo espaco*/
 function adicionaEspaco() {
     espacoCount++;
     var original = $("#clone1");
     var newEspaco = original.clone();
 
     if (tipoInstalacao[$("#tipo-iluminacao").val()].nome == INTERIOR) {
-        /*Incrementa os id's*/
         newEspaco.attr('id', "clone" + espacoCount);
         newEspaco.find("td").eq(0).html(espacoCount);
         newEspaco.find("td").eq(1).find("select").attr("id", "tipologia" + espacoCount);
@@ -456,7 +431,6 @@ function adicionaEspaco() {
 
         newEspaco.insertBefore('#adiciona-row');
         
-        //todo insert validation rules for new space
         $("#tipologia" + espacoCount).rules("add", {
             required: true,
             messages: {
@@ -476,9 +450,9 @@ function adicionaEspaco() {
             step: 0.1,
             messages: {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
-                min: '<label style="font-size: 14px; color: red;">O custo tem que ser maior que 0.</label>',
-                step: '<label style="font-size: 14px; color: red;">O passo é de 0.1.</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,). Ex: 10.0</label>'
+                min: '<label style="font-size: 14px; color: red;">A área tem que ser maior que 0</label>',
+                step: '<label style="font-size: 14px; color: red;">Introduza um número válido. Ex: 10.0</label>',
+                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,)</label>'
             }
         });
         
@@ -497,8 +471,7 @@ function adicionaEspaco() {
         newEspaco.find("td").eq(2).find("button").attr("id", "remove-espaco" + espacoCount);
 
         newEspaco.insertBefore('#adiciona-row');
-        
-        
+                
         $("#designacao" + espacoCount).rules("add", {
             required: true,
             messages: {
@@ -507,13 +480,11 @@ function adicionaEspaco() {
         });
         
         newEspaco.show();        
-
     }
 }
 
 function recolheDados() {
 
-    // limpa o array para o caso de voltar atras
     while (espaco.length > 1) {
         espaco.pop();
     }
@@ -531,9 +502,7 @@ function recolheDados() {
     tipoInstalacao[estadoNum].custo_unit = $("#custo-unit-iluminacao").val();
 }
 
-
 function recolheFonteLuz() {
-    //var elementos = document.getElementsByName("espaco-fonte-luz");
     while (fonteLuz.length > 1) {
         fonteLuz.pop();
     }
@@ -553,7 +522,6 @@ function recolheFonteLuz() {
         }
 
         var potenciaUnitFinal = calculaAP_BP(potencia, tipoFonteLuz[tipo].rendimento, tipoFonteLuz[LED].rendimento);
-        //Está invertido para saber qual é o que não é para mostrar
         if (potenciaUnitFinal >= 25)
             estadoPotenciaUnitFinal = BP;
         else if (potenciaUnitFinal < 25)
@@ -572,9 +540,7 @@ function recolheFonteLuz() {
             medidasUpgrade: tipoFonteLuz[tipo].medidas
         });
     }
-
 }
-
 
 function recolheMedidas() {
     var elementos = document.getElementsByName("espaco-medidas");
@@ -598,7 +564,6 @@ function recolheMedidas() {
         });
     }
 }
-
 
 function buildResumo() {
     resumoCenarios = [
@@ -633,11 +598,11 @@ function buildResumo() {
     resumoGeral.reducaoCustos2 = !isNaN(resumoCenarios[0].custosEnergeticos) ? (resumoGeral.reducaoCustos1 / resumoCenarios[0].custosEnergeticos * 100).toFixed(0) : ' - ';
     resumoGeral.investimento = investimento[TOTAL].investimento.toFixed(0);
     resumoGeral.payback = !isNaN(investimento[TOTAL].pri) ? investimento[TOTAL].pri.toFixed(1) : ' - ';
-    //cenario inicial
+    
     $("#potencia-1-resumo").html(resumoCenarios[INICIAL].potencia + ' W');
     $("#consumo-anual-1-resumo").html(resumoCenarios[INICIAL].consumoAnual + ' kWh');
     $("#custos-energeticos-1-resumo").html(resumoCenarios[INICIAL].custosEnergeticos + ' €');
-    //cenario final
+
     $("#potencia-2-resumo").html(resumoCenarios[FINAL].potencia + ' W');
     $("#consumo-anual-2-resumo").html(resumoCenarios[FINAL].consumoAnual + ' kWh');
     $("#custos-energeticos-2-resumo").html(resumoCenarios[FINAL].custosEnergeticos + ' €');
@@ -656,8 +621,6 @@ function buildResumo() {
     }
 }
 
-
-// BUTTONS STEPS
 function nextStep() {
     var id = $('.step:visible').data('id');
     var nextId = $('.step:visible').data('id') + 1;
@@ -726,8 +689,6 @@ function prevStep() {
     }
 }
 
-
-/*MAIN*/
 $(document).ready(function () {
     buildTipoIluminacao();
 
@@ -752,7 +713,7 @@ $(document).ready(function () {
             },
             'custo-unit-iluminacao': {
                 required: true,
-                min: 0.1,
+                min: 0.01,
                 max: 1,
                 step: 0.0001
             }
@@ -763,10 +724,10 @@ $(document).ready(function () {
             },
             'custo-unit-iluminacao': {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
-                min: '<label style="font-size: 14px; color: red;">O valor mínimo para este campo é 0.0001 .</label>',
-                max: '<label style="font-size: 14px; color: red;">O valor máximo para este campo é 1.</label>',
-                step: '<label style="font-size: 14px; color: red;">O passo é de 0.0001</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza um número válido.Ex: 0.1.</label>'
+                min: '<label style="font-size: 14px; color: red;">O custo unitário mínimo é de 0.01€/kWh</label>',
+                max: '<label style="font-size: 14px; color: red;">O custo unitário máximo é de 1,00€/kWh</label>',
+                step: '<label style="font-size: 14px; color: red;">O passo de incremento é de 0.0001</label>',
+                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,)</label>'
             }
         }
     });
@@ -774,7 +735,7 @@ $(document).ready(function () {
     $(".fonte-luz-but").click(function () {
         
         if($("#tipo-iluminacao").val()=="" || $("#tipo-iluminacao").val() == undefined){
-            alert("Não é possível avançar sem selecccionar um tipo de iluminação.");
+            alert("Não é possível avançar sem selecionar o tipo de iluminação.");
         }else if(espacoCount<=0){
             alert("Não é possível avançar sem espaços definidos.");
         }else{        

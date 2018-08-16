@@ -16,13 +16,11 @@ const FINAL = 1;
 const LED = 6;
 const OUTROS = 9;
 
-//Faz o estado para não mostrar o que tiver seleccionado
 var estadoPotenciaUnitFinal = "";
 
 var estado = "";
 var estadoNum = "";
 
-//flag para nao acrescentar mais dados ao select do fonte luz
 var firstTimeMedidas = true;
 
 var horasAnuaisFunc = 4015;
@@ -231,7 +229,7 @@ var tipoFonteLuz = [
     medidas: "0,2,3"
   },
   {
-    tipo: "LED",    //predefinida
+    tipo: "LED",
     rendimento: 120,
     acessorios: 0,
     potencia: [
@@ -292,7 +290,7 @@ var tipoFonteLuz = [
   },
   {
     tipo: "Outra",
-    rendimento: "", //a definir pelo utilizador
+    rendimento: "",
     acessorios: 0,
     potencia: 0,
     aplicacaoPotencia: [

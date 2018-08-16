@@ -18,8 +18,6 @@ function totalPotenciaFonteLuz() {
   var potencia = 0;
   for (var i = 1; i <= espacoCount; i++) {
 
-    //added increment i value because when you get this values, they exist two times, so in the specific 
-    //case of OUTROS he read the same data two times and because of that it add it to total
     quantidade = $("#quantidade-fonte-luz" + i).val();
     tipoLuzIndex = $("#tipo-fonte-luz" + i).val();
     if (tipoLuzIndex == OUTROS){
