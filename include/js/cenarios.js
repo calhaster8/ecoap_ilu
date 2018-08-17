@@ -294,4 +294,14 @@ function calculaInvestimento() {
     investimento[TOTAL].reducaoCustos2 = totalReducaoCustos2;
     investimento[TOTAL].pri = calculaPriInvestimento(totalInvestimento, totalReducaoCustos1);
    
+   if(totalReducaoCustos1<0){
+        $("#errorILU").html("A implementação da medida selecionada resultará num aumento da fatura energética face à situação actual.");
+		$("#errorILU").show();
+    }else if (totalReducaoCustos1==0){
+		$("#errorILU").html("A implementação da medida selecionada não resultará em nenhuma alteração na fatura energética atual.");
+		$("#errorILU").show();
+	} else {
+        $("#errorILU").html('');
+        $("#errorILU").hide();
+   	}
 }
