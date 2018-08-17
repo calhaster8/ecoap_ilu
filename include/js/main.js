@@ -121,7 +121,7 @@ function buildDadosTable() {
             required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
             min: '<label style="font-size: 14px; color: red;">A área tem que ser maior que 0</label>',
             step: '<label style="font-size: 14px; color: red;">O passo de incremento é de 0.1</label>',
-            number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,)</label>'
+            number: '<label style="font-size: 14px; color: red;">Introduza números com (.) em vez de (,)</label>'
         }
     });
 
@@ -452,7 +452,7 @@ function adicionaEspaco() {
                 required: '<label style="font-size: 14px; color: red;">Este campo é obrigatório.</label>',
                 min: '<label style="font-size: 14px; color: red;">A área tem que ser maior que 0</label>',
                 step: '<label style="font-size: 14px; color: red;">Introduza um número válido. Ex: 10.0</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,)</label>'
+                number: '<label style="font-size: 14px; color: red;">Introduza números com (.) em vez de (,)</label>'
             }
         });
         
@@ -727,7 +727,7 @@ $(document).ready(function () {
                 min: '<label style="font-size: 14px; color: red;">O custo unitário mínimo é de 0.01€/kWh</label>',
                 max: '<label style="font-size: 14px; color: red;">O custo unitário máximo é de 1,00€/kWh</label>',
                 step: '<label style="font-size: 14px; color: red;">O passo de incremento é de 0.0001</label>',
-                number: '<label style="font-size: 14px; color: red;">Introduza (.) em vez de (,)</label>'
+                number: '<label style="font-size: 14px; color: red;">Introduza números com (.) em vez de (,)</label>'
             }
         }
     });
