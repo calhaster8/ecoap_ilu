@@ -631,6 +631,7 @@ function nextStep() {
         $('.anterior').show();
         $('.custo-iluminacao-box').hide();
         $('#tipo-iluminacao').attr('disabled', 'disabled').addClass('sel-disable');
+        $('#disclaimer').hide();
     }
 
     if (nextId == 2) {
@@ -638,6 +639,7 @@ function nextStep() {
         $('.but-2').hide();
         $('.recolhe-medidas-but').show();
         $('.end-step').hide();
+        $('#disclaimer').hide();
     }
 
     if (nextId == 3) {
@@ -645,6 +647,7 @@ function nextStep() {
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
         $('.print_pdf').hide();
+        $('#disclaimer').hide();
     }
 
     if (nextId == 4) {
@@ -654,7 +657,10 @@ function nextStep() {
         $('#reload-but').show();
         $('.print_pdf').show()
         $('.resumo-but').hide();
+        $('#disclaimer').show();
     }
+    
+    location.hash = "html";
 }
 
 function prevStep() {
@@ -671,12 +677,14 @@ function prevStep() {
         $('.anterior').hide();
         $('.custo-iluminacao-box').show();
         $('#tipo-iluminacao').removeAttr('disabled', 'disabled').removeClass('sel-disable');
+        $('#disclaimer').hide();
     }
 
     if (prevId == 2) {
         $('.but-2').hide();
         $('.recolhe-medidas-but').show();
         $('.end-step').hide();
+        $('#disclaimer').hide();
     }
 
     if (prevId == 3) {
@@ -686,7 +694,10 @@ function prevStep() {
         $('#reload-but').hide();
         $('.print_pdf').hide()
         $('.resumo-but').show();
+        $('#disclaimer').hide();
     }
+    
+    location.hash = "html";
 }
 
 $(document).ready(function () {
