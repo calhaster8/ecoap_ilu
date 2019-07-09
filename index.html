@@ -21,6 +21,7 @@
         <script src="include/js/cenarios.js"></script>    
         <script src="include/js/print.min.js"></script>
         <script src="include/js/jquery.validate.min.js"></script>
+        <script src="./node_modules/chart.js/dist/Chart.bundle.js"></script>
         <title>ECO.AP - Calculadora - Iluminação</title>
     </head>
     <body>
@@ -164,54 +165,62 @@
                                     </div>
                 
                                     <div id="resumo" data-id="4" class="step">
-                                        <span>Resumo - Resultados</span>
-										<p id="errorILU" style="color: red;"></p>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <tr style="font-weight:bold;" class="titulo_row">
-                                                    <th class="tituloTH">&nbsp;</th>
-                                                    <th class="tituloTH">Cenário inicial</th>
-                                                    <th class="tituloTH">Cenário final</th>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td class="in">Potência total</td>
-                                                    <td id="potencia-1-resumo" class="center">0 W</td>
-                                                    <td id="potencia-2-resumo" class="center">0 W</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td class="in">Consumo anual de energia</td>
-                                                    <td id="consumo-anual-1-resumo" class="center">0 kWh</td>
-                                                    <td id="consumo-anual-2-resumo" class="center">0 kWh</td>
-                                                </tr>
-                                                <tr id="custps-energeticos-resumo" class="textTR">
-                                                    <td class="in">Custos energéticos anuais</td>
-                                                    <td id="custos-energeticos-1-resumo" class="center">valor</td>
-                                                    <td id="custos-energeticos-2-resumo" class="center">valor</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td rowspan="2" class="in">Redução anual de consumos</td>
-                                                    <td id="reducao-consumos-1-resumo" colspan="2" class="center">valor</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td id="reducao-consumos-2-resumo" colspan="2" class="center">valor</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td rowspan="2" class="in">Redução anual de custos energéticos</td>
-                                                    <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td id="reducao-custos-2-resumo" colspan="2" class="center">valor</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td class="in">Investimento </td>
-                                                    <td id="investimento-resumo" colspan="2" class="center">- €</td>
-                                                </tr>
-                                                <tr class="textTR">
-                                                    <td class="in">Período de Retorno</td>
-                                                    <td id="payback-resumo" colspan="2" class="center">valor</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <h2 class="resumo-title">Resumo - Resultados</h2>
+                                        <p id="errorILU" style="color: red;"></p>
+
+                                        <div class="col-md-5">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr style="font-weight:bold;" class="titulo_row">
+                                                        <th class="tituloTH">&nbsp;</th>
+                                                        <th class="tituloTH">Cenário inicial</th>
+                                                        <th class="tituloTH">Cenário final</th>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td class="in">Potência total</td>
+                                                        <td id="potencia-1-resumo" class="center">0 W</td>
+                                                        <td id="potencia-2-resumo" class="center">0 W</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td class="in">Consumo anual de energia</td>
+                                                        <td id="consumo-anual-1-resumo" class="center">0 kWh</td>
+                                                        <td id="consumo-anual-2-resumo" class="center">0 kWh</td>
+                                                    </tr>
+                                                    <tr id="custps-energeticos-resumo" class="textTR">
+                                                        <td class="in">Custos energéticos anuais</td>
+                                                        <td id="custos-energeticos-1-resumo" class="center">valor</td>
+                                                        <td id="custos-energeticos-2-resumo" class="center">valor</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td rowspan="2" class="in">Redução anual de consumos</td>
+                                                        <td id="reducao-consumos-1-resumo" colspan="2" class="center">valor</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td id="reducao-consumos-2-resumo" colspan="2" class="center">valor</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td rowspan="2" class="in">Redução anual de custos energéticos</td>
+                                                        <td id="reducao-custos-1-resumo" colspan="2" class="center">valor</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td id="reducao-custos-2-resumo" colspan="2" class="center">valor</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td class="in">Investimento </td>
+                                                        <td id="investimento-resumo" colspan="2" class="center">- €</td>
+                                                    </tr>
+                                                    <tr class="textTR">
+                                                        <td class="in">Período de Retorno</td>
+                                                        <td id="payback-resumo" colspan="2" class="center">valor</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="col-md-7">
+                                            <canvas id="iluIntChart" width="400" height="400"></canvas>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -619,6 +619,140 @@ function buildResumo() {
     } else {
         $("#payback-resumo").html(resumoGeral.payback + ' anos');
     }
+
+    if ($('#tipo-iluminacao').val() == 0) {
+        iluIntChart();
+    } else if ($('#tipo-iluminacao').val() == 1) {
+        iluExtChart();
+    }
+
+
+}
+
+function maxChart(array) {
+    var max = 0;
+    if (array.length > 0) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] > max || max == 0) {
+                max = array[i];
+            }
+        }
+    }
+    max += (max * 0.10);
+
+    return max;
+
+}
+
+function iluIntChart() {
+
+    //CENARIO INICIAL
+    var cenarioInicialDesign = [];
+    var cenarioInicialConsumo = [];
+
+    for (i = 1; i <= espacoCount; i++) {
+        cenarioInicialDesign[i] = cenarioInicial[i].designacao;
+        cenarioInicialConsumo[i] = cenarioInicial[i].consumo;
+    }
+
+    cenarioInicialDesign.shift();
+    cenarioInicialConsumo.shift();
+
+    //CENARIO FINAL
+    var cenarioFinalConsumo = [];
+
+    for (i = 1; i <= espacoCount; i++) {
+        cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal;
+    }
+    cenarioFinalConsumo.shift();
+
+    var maxChartValue = maxChart(cenarioInicialConsumo) > maxChart(cenarioFinalConsumo) ? maxChart(cenarioInicialConsumo) : maxChart(cenarioFinalConsumo);
+
+    var ctx = document.getElementById("iluIntChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: cenarioInicialDesign,
+            datasets: [{
+                label: 'Cenário Inicial',
+                data: cenarioInicialConsumo,
+                backgroundColor: 'rgba(53, 91, 183, 1)',
+                borderColor: 'rgba(53, 91, 183, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Cenário Final',
+                data: cenarioFinalConsumo,
+                backgroundColor: 'rgba(95, 160, 55, 1)',
+                borderColor: 'rgba(95, 160, 55, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: maxChartValue
+                    }
+                }]
+            }
+        }
+    });
+}
+
+function iluExtChart() {
+    //CENARIO INICIAL
+    var cenarioInicialDesign = [];
+    var cenarioInicialConsumo = [];
+
+    for (i = 1; i <= espacoCount; i++) {
+        cenarioInicialDesign[i] = cenarioInicial[i].designacao;
+        cenarioInicialConsumo[i] = cenarioInicial[i].consumo;
+    }
+
+    cenarioInicialDesign.shift();
+    cenarioInicialConsumo.shift();
+
+    //CENARIO FINAL
+    var cenarioFinalConsumo = [];
+
+    for (i = 1; i <= espacoCount; i++) {
+        cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal;
+    }
+    cenarioFinalConsumo.shift();
+
+    var maxChartValue = maxChart(cenarioInicialConsumo) > maxChart(cenarioFinalConsumo) ? maxChart(cenarioInicialConsumo) : maxChart(cenarioFinalConsumo);
+
+    var ctx = document.getElementById("iluIntChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: cenarioInicialDesign,
+            datasets: [{
+                label: 'Cenário Inicial',
+                data: cenarioInicialConsumo,
+                backgroundColor: 'rgba(53, 91, 183, 1)',
+                borderColor: 'rgba(53, 91, 183, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Cenário Final',
+                data: cenarioFinalConsumo,
+                backgroundColor: 'rgba(95, 160, 55, 1)',
+                borderColor: 'rgba(95, 160, 55, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: maxChartValue
+                    }
+                }]
+            }
+        }
+    });
 }
 
 function nextStep() {

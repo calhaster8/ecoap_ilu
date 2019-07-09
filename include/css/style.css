@@ -345,7 +345,7 @@ body {
             .main .main-content .dados-child .tabelas table tbody tr td.check-cell input[type=checkbox]:checked + label,
             .main .main-content .dados-child .tabelas table tbody .textTR td.check-cell input[type=checkbox]:checked + label {
               left: 75px; }
-    .main .main-content .dados-child #resumo span {
+    .main .main-content .dados-child #resumo .resumo-title {
       text-align: left;
       text-transform: uppercase;
       font-size: 1.3em;
@@ -353,7 +353,7 @@ body {
       font-family: 'Amelia-Basic-Bold', sans-serif; }
     .main .main-content .dados-child #resumo table {
       background-color: #f2f2f2;
-      width: 40%; }
+      width: 100%; }
       .main .main-content .dados-child #resumo table tbody tr,
       .main .main-content .dados-child #resumo table tbody .textTR {
         color: #0099cc;
