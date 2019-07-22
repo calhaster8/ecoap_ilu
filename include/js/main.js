@@ -634,7 +634,7 @@ function maxChart(array) {
     if (array.length > 0) {
         for (var i = 0; i < array.length; i++) {
             if (array[i] > max || max == 0) {
-                max = array[i];
+                max = new Number(array[i]);
             }
         }
     }
@@ -692,22 +692,39 @@ function iluIntChart() {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        max: maxChartValue
+                        max: maxChartValue,
+                        callback: function (value, index, values) {
+                            return value + ' kWh';
+                        }
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 90,
+                        minRotation: 90
                     }
                 }]
+            },
+            title: {
+                display: true,
+                text: 'Custo anual de energia (kWh)',
+                fontSize: 16,
+                fontColor: '#0099cc'
             }
         }
     });
 }
 
 function iluExtChart() {
+    var maxChartValue = 0;  
     //CENARIO INICIAL
     var cenarioInicialDesign = [];
     var cenarioInicialConsumo = [];
 
     for (i = 1; i <= espacoCount; i++) {
         cenarioInicialDesign[i] = cenarioInicial[i].designacao;
-        cenarioInicialConsumo[i] = cenarioInicial[i].consumo;
+        cenarioInicialConsumo[i] = cenarioInicial[i].consumo.toFixed(0);
     }
 
     cenarioInicialDesign.shift();
@@ -717,11 +734,11 @@ function iluExtChart() {
     var cenarioFinalConsumo = [];
 
     for (i = 1; i <= espacoCount; i++) {
-        cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal;
+        cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal.toFixed(0);
     }
     cenarioFinalConsumo.shift();
 
-    var maxChartValue = maxChart(cenarioInicialConsumo) > maxChart(cenarioFinalConsumo) ? maxChart(cenarioInicialConsumo) : maxChart(cenarioFinalConsumo);
+    maxChartValue = maxChart(cenarioInicialConsumo) > maxChart(cenarioFinalConsumo) ? maxChart(cenarioInicialConsumo) : maxChart(cenarioFinalConsumo);
 
     var ctx = document.getElementById("iluIntChart");
     var myChart = new Chart(ctx, {
@@ -747,9 +764,25 @@ function iluExtChart() {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        max: maxChartValue
+                        max: maxChartValue,
+                        callback: function (value, index, values) {
+                            return value + ' kWh';
+                        }
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 90,
+                        minRotation: 90
                     }
                 }]
+            },
+            title: {
+                display: true,
+                text: 'Custo anual de energia (kWh)',
+                fontSize: 16,
+                fontColor: '#0099cc'
             }
         }
     });
@@ -822,6 +855,9 @@ function prevStep() {
     }
 
     if (prevId == 3) {
+        $('.final-graph #iluIntChart').remove();
+        $('.final-graph').append('<canvas id="iluIntChart" width="400" height="400"></canvas>');
+
         $('.but-2').hide();
         $('.recolhe-medidas-but').hide();
         $('.end-step').show();
