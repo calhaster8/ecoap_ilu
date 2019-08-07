@@ -694,7 +694,7 @@ function iluIntChart() {
                         beginAtZero: true,
                         max: maxChartValue,
                         callback: function (value, index, values) {
-                            return value + ' kWh';
+                            return value.toFixed(0) + ' kWh';
                         }
                     }
                 }],
@@ -708,7 +708,7 @@ function iluIntChart() {
             },
             title: {
                 display: true,
-                text: 'Custo anual de energia (kWh)',
+                text: 'Consumo anual de energia (kWh)',
                 fontSize: 16,
                 fontColor: '#0099cc'
             }
@@ -766,7 +766,7 @@ function iluExtChart() {
                         beginAtZero: true,
                         max: maxChartValue,
                         callback: function (value, index, values) {
-                            return value + ' kWh';
+                            return value.toFixed(0) + ' kWh';
                         }
                     }
                 }],
@@ -780,7 +780,7 @@ function iluExtChart() {
             },
             title: {
                 display: true,
-                text: 'Custo anual de energia (kWh)',
+                text: 'Consumo anual de energia (kWh)',
                 fontSize: 16,
                 fontColor: '#0099cc'
             }
@@ -947,3 +947,58 @@ $(document).ready(function () {
         }
     });
 });
+
+function printCanvas() {
+    html2canvas(document.body).then(function(canvas) {
+        document.body.appendChild(canvas);
+    });
+
+    /*const error = document.getElementById('errorILU').outerHTML;
+    const resumo_table = document.getElementById('resumo-table-graphic').outerHTML;
+    const dataUrl = document.getElementById('iluIntChart').toDataURL();
+
+    let windowContent = '<!DOCTYPE html>';
+    windowContent += '<html>';
+    windowContent += '<head><title>ECO.AP - Calculadora - Iluminação</title></head>';
+    windowContent += '<body>';
+    windowContent += '<main class="main container">';
+    windowContent += '<form id="ilu-form">';
+    windowContent += '<div class="row">';
+    windowContent += '<div class="col-md-12">';
+    windowContent += '<div class="main-content">';
+    windowContent += '<div class="dados">';
+    windowContent += '<div class="dados-child">';
+    windowContent += '<div id="resumo" class="step">';
+    windowContent += '<h2 class="resumo-title">Resumo - Resultados</h2>';
+    windowContent += error;
+
+    windowContent += '<div class="col-md-5">';
+    windowContent += resumo_table;
+    windowContent += '</div>';
+
+    windowContent += '<div class="col-md-7 final-graph">';
+    windowContent += '<img src="' + dataUrl + '">';
+    windowContent += '</div>';
+   
+    windowContent += '</div>';
+    windowContent += '</div>';
+    windowContent += '</div>';
+    windowContent += '</div>';
+    windowContent += '</div>';
+    windowContent += '</div>';
+    windowContent += '</form>';
+    windowContent += '</main>';
+    windowContent += '</body>';
+    windowContent += '</html>';*/
+    
+    /*const printWin = window.open('', '', 'width=' + screen.availWidth + ',height=' + screen.availHeight);
+    printWin.document.open();
+    printWin.document.write(windowContent);
+
+    printWin.document.addEventListener('load', function () {
+        printWin.focus();
+        printWin.print();
+        printWin.document.close();
+        printWin.close();
+    }, true);*/
+}

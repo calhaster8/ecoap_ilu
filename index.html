@@ -8,8 +8,8 @@
         <!--BOOTSTRAP CDN-->
         <link rel="stylesheet" href="include/css/bootstrap.min.css"/>
         <!--CUSTOM CSS-->
-        <link rel="stylesheet" href="include/css/style.css"/>
-        <link rel="stylesheet" href="include/css/print.min.css"/>
+        <link rel="stylesheet" href="include/css/style.css" type="text/css"/>
+        <!--<link rel="stylesheet" href="include/css/print.min.css"/>-->
         <!--BOOTSTRAP + JQUERY CDN-->
         <script src="include/js/jquery.min.js" ></script>
         <script src="include/js/bootstrap.min.js"></script>
@@ -19,7 +19,7 @@
         <script src="include/js/main.js"></script>
         <script src="include/js/calculos.js"></script>
         <script src="include/js/cenarios.js"></script>    
-        <script src="include/js/print.min.js"></script>
+        <!--<script src="include/js/print.min.js"></script>-->
         <script src="include/js/jquery.validate.min.js"></script>
         <script src="./node_modules/chart.js/dist/Chart.bundle.js"></script>
         <title>ECO.AP - Calculadora - Iluminação</title>
@@ -169,7 +169,7 @@
                                         <p id="errorILU" style="color: red;"></p>
 
                                         <div class="col-md-5">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered" id="resumo-table-graphic">
                                                 <tbody>
                                                     <tr style="font-weight:bold;" class="titulo_row">
                                                         <th class="tituloTH">&nbsp;</th>
@@ -246,7 +246,8 @@
                         </div>
                         <div class="print_pdf step-but">
                             <span class="print_text">Deseja imprimir?
-                                <button type="button" onclick="printJS('resumo', 'html')" class="print_link">Clique aqui</button>
+                                <!--<button type="button" onclick="printJS('resumo', 'html')" class="print_link">Clique aqui</button>-->
+                                <button type="button" onclick="printCanvas()" class="print_link">Clique aqui</button>
                             </span>
                         </div>
                     </div>
