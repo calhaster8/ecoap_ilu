@@ -653,6 +653,7 @@ function iluIntChart() {
     for (i = 1; i <= espacoCount; i++) {
         cenarioInicialDesign[i] = cenarioInicial[i].designacao;
         cenarioInicialConsumo[i] = cenarioInicial[i].consumo;
+        cenarioInicialConsumo[i] = new Number(cenarioInicialConsumo[i].toFixed(0));
     }
 
     cenarioInicialDesign.shift();
@@ -663,6 +664,7 @@ function iluIntChart() {
 
     for (i = 1; i <= espacoCount; i++) {
         cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal;
+        cenarioFinalConsumo[i] = new Number(cenarioFinalConsumo[i].toFixed(0));
     }
     cenarioFinalConsumo.shift();
 
@@ -711,6 +713,9 @@ function iluIntChart() {
                 text: 'Consumo anual de energia (kWh)',
                 fontSize: 16,
                 fontColor: '#0099cc'
+            },
+            legend: {
+                onClick: function (event, legendItem) { },
             }
         }
     });
@@ -724,7 +729,8 @@ function iluExtChart() {
 
     for (i = 1; i <= espacoCount; i++) {
         cenarioInicialDesign[i] = cenarioInicial[i].designacao;
-        cenarioInicialConsumo[i] = cenarioInicial[i].consumo.toFixed(0);
+        cenarioInicialConsumo[i] = cenarioInicial[i].consumo;
+        cenarioInicialConsumo[i] = new Number(cenarioInicialConsumo[i].toFixed(0));
     }
 
     cenarioInicialDesign.shift();
@@ -734,7 +740,8 @@ function iluExtChart() {
     var cenarioFinalConsumo = [];
 
     for (i = 1; i <= espacoCount; i++) {
-        cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal.toFixed(0);
+        cenarioFinalConsumo[i] = cenarioFinal[i].consumoFinal;
+        cenarioFinalConsumo[i] = cenarioFinalConsumo[i].toFixed(0);
     }
     cenarioFinalConsumo.shift();
 
@@ -783,6 +790,9 @@ function iluExtChart() {
                 text: 'Consumo anual de energia (kWh)',
                 fontSize: 16,
                 fontColor: '#0099cc'
+            },
+            legend: {
+                onClick: function (event, legendItem) { },
             }
         }
     });
